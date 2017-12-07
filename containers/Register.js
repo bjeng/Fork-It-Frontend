@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import { LinearGradient } from 'expo';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import { Font } from 'expo';
 
-export default class Login extends React.Component {
-
-  render() {
+const Register = ({}) => {
     return (
       <LinearGradient colors={['#303F4C', '#3B4955', '#AFAFAF']} style={styles.background} location={[0.3, 0.4, 1]}>
         <View style={styles.container}>
@@ -42,8 +41,21 @@ export default class Login extends React.Component {
         </View>
       </LinearGradient>
     );
-  }
 }
+
+Register.propTypes = {
+};
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+    };
+};
 
 const styles = StyleSheet.create({
   background: {
@@ -149,3 +161,8 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Register);
