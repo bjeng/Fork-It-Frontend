@@ -16,36 +16,40 @@ export default class Tabbar extends React.Component {
 
   selectNewsfeed(fn) {
     this.setState({
-      leftColor: '#EAEAEA',
-      middleColor: "#FFFFFF",
-      rightColor: "#FFFFFF",
+      newsfeedColor: '#EAEAEA',
+      discoverColor: "#FFFFFF",
+      profileColor: "#FFFFFF",
+      searchColor: "#FFFFFF"
     })
     fn()
   }
 
   selectDiscover(fn) {
     this.setState({
-      leftColor: "#FFFFFF",
-      middleColor: '#EAEAEA',
-      rightColor: "#FFFFFF",
+      newsfeedColor: '#FFFFFF',
+      discoverColor: "#EAEAEA",
+      profileColor: "#FFFFFF",
+      searchColor: "#FFFFFF"
     })
     fn()
   }
 
   selectProfile(fn) {
     this.setState({
-      leftColor: "#FFFFFF",
-      middleColor: "#FFFFFF",
-      rightColor: '#EAEAEA',
+      newsfeedColor: '#FFFFFF',
+      discoverColor: "#FFFFFF",
+      profileColor: "#EAEAEA",
+      searchColor: "#FFFFFF"
     })
     fn()
   }
 
   selectSearch(fn) {
     this.setState({
-      leftColor: "#FFFFFF",
-      middleColor: "#FFFFFF",
-      rightColor: '#EAEAEA',
+      newsfeedColor: '#FFFFFF',
+      discoverColor: "#FFFFFF",
+      profileColor: "#FFFFFF",
+      searchColor: "#EAEAEA"
     })
     fn()
   }
