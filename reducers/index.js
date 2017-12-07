@@ -1,9 +1,9 @@
-const reducer = (state = {a: 1, b: 2}, action) => {
-  // console.log(state)
-  switch (action.type) {
-    default:
-      return state
-  }
-};
+import { combineReducers } from 'redux';
+import testReducer from './testReducer';
 
-export default reducer;
+const rootReducer = combineReducers({
+    test: testReducer,
+});
+
+
+export default rootReducer;

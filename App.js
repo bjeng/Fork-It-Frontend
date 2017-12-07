@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from './reducers/index';
+import rootReducer from './reducers/index';
 import { StyleSheet, Text, View } from 'react-native';
 import { Router, Scene, Lightbox, ActionConst } from 'react-native-router-flux';
 import Home from './containers/Home.js';
@@ -29,7 +29,7 @@ import StatusPage from './containers/StatusPage.js';
 import TestQuestion from './containers/TestQuestion.js';
 import MultiResult from './containers/MultiResult.js';
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 export default function App ({}) {
     // console.log(store)
