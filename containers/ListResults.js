@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import MinibarResults from '../components/MinibarResults.js';
@@ -8,12 +9,7 @@ import StarRating from 'react-native-star-rating';
 import RestResult from '../components/RestResult.js';
 import restImage from "../assets/burger.jpg";
 
-export default class ListResults extends React.Component {
-  constructor() {
-    super()
-  }
-
-  render() {
+const ListResults = ({}) => {
     return (
       <View style={styles.container}>
         <Navbar/>
@@ -37,8 +33,21 @@ export default class ListResults extends React.Component {
         </View>
       </View>
     );
-  }
 }
+
+ListResults.propTypes = {
+};
+
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+    };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -154,3 +163,8 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(30),
   },
 });
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ListResults);

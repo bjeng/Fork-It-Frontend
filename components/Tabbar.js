@@ -26,8 +26,8 @@ export default class Tabbar extends React.Component {
 
   selectDiscover(fn) {
     this.setState({
-      newsfeedColor: "#FFFFFF",
-      discoverColor: '#EAEAEA',
+      newsfeedColor: '#FFFFFF',
+      discoverColor: "#EAEAEA",
       profileColor: "#FFFFFF",
       searchColor: "#FFFFFF"
     })
@@ -36,9 +36,9 @@ export default class Tabbar extends React.Component {
 
   selectProfile(fn) {
     this.setState({
-      newsfeedColor: "#FFFFFF",
+      newsfeedColor: '#FFFFFF',
       discoverColor: "#FFFFFF",
-      profileColor: '#EAEAEA',
+      profileColor: "#EAEAEA",
       searchColor: "#FFFFFF"
     })
     fn()
@@ -46,10 +46,10 @@ export default class Tabbar extends React.Component {
 
   selectSearch(fn) {
     this.setState({
-      newsfeedColor: "#FFFFFF",
+      newsfeedColor: '#FFFFFF',
       discoverColor: "#FFFFFF",
       profileColor: "#FFFFFF",
-      searchColor: '#EAEAEA'
+      searchColor: "#EAEAEA"
     })
     fn()
   }
