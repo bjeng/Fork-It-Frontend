@@ -41,12 +41,13 @@ export default function App ({}) {
               <Scene key="home" component={Home} initial={true} hideNavBar={true}/>
               <Scene key="login" component={Login} hideNavBar={true}/>
               <Scene key="register" component={Register} hideNavBar={true}/>
+              <Scene key="eats1" component={Eats1} hideNavBar={true} hideTabBar={true}/>
+              <Scene key="eats2" component={Eats2} hideNavBar={true} hideTabBar={true}/>
+              <Scene key="eats3" component={Eats3} hideNavBar={true} hideTabBar={true}/>
+              <Scene key="algo" component={Algo} hideNavBar={true} hideTabBar={true}/>
+              <Scene key="testquestion" component={TestQuestion} hideNavBar={true} hideTabBar={true}/>
               <Scene tabs={true} animationEnabled={false} tabBarComponent={Tabbar}>
                 <Scene key="discover" component={DiscoverHome} hideNavBar={true}/>
-                <Scene key="eats1" component={Eats1} hideNavBar={true} hideTabBar={true}/>
-                <Scene key="eats2" component={Eats2} hideNavBar={true} hideTabBar={true}/>
-                <Scene key="eats3" component={Eats3} hideNavBar={true} hideTabBar={true}/>
-                <Scene key="algo" component={Algo} hideNavBar={true} hideTabBar={true}/>
                 <Scene key="listresults" component={ListResults} hideNavBar={true}/>
                 <Scene key="listmap" component={ListMap} hideNavBar={true}/>
                 <Scene key="singleresult" component={SingleResult} hideNavBar={true}/>
@@ -59,7 +60,6 @@ export default function App ({}) {
                 <Scene key="search" component={Search} hideNavBar={true}/>
                 <Scene key="eventform" component={EventForm} hideNavBar={true}/>
                 <Scene key="statuspage" component={StatusPage} hideNavBar={true}/>
-                <Scene key="testquestion" component={TestQuestion} hideNavBar={true} hideTabBar={true}/>
                 <Scene key="multiresult" component={MultiResult} hideNavBar={true}/>
               </Scene>
             </Scene>
