@@ -11,7 +11,7 @@ import StarRating from 'react-native-star-rating';
 const SingleResult = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
+        <Navbar hasBack={true}/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/discoverHome.png")}/>
           <View style={styles.nameContainer}>
@@ -21,12 +21,12 @@ const SingleResult = ({}) => {
                 maxStars={1}
                 rating={0}
                 starSize={40}
-                starColor={'white'}
-                emptyStarColor={'white'}
+                starColor={'#ddd3dc'}
+                emptyStarColor={'#ddd3dc'}
               />
             </View>
             <View style={styles.name}>
-              <Text style={styles.textStyle}>Name of the Restaurant testing again if its long</Text>
+              <Text style={styles.nameText}>Name of the Restaurant testing again if its long</Text>
             </View>
           </View>
           <View style={styles.detailsContainer}>
@@ -38,8 +38,8 @@ const SingleResult = ({}) => {
                 maxStars={5}
                 rating={4}
                 starSize={20}
-                starColor={'#00042E'}
-                emptyStarColor={'#00042E'}
+                starColor={'#ecf000'}
+                emptyStarColor={'#ecf000'}
               />
               <Text style={styles.textStyle}>1,000 reviews on Yelp</Text>
               <Text style={styles.textStyle}>100 miles from you</Text>
@@ -79,17 +79,9 @@ const SingleResult = ({}) => {
                 />
             </MapView>
           </View>
-          <View style={styles.backContainer}>
-            <TouchableOpacity style={styles.restart} onPress={Actions.discover}>
-              <Text style={styles.buttonStyle}>Restart Search</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.back} onPress={Actions.listresults}>
-              <Text style={styles.buttonStyle}>Back to Results</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.goContainer}>
-            <TouchableOpacity style={styles.fork} onPress={Actions.resultlightbox}>
-              <Text style={styles.buttonStyle}>Fork It</Text>
+          <View style={styles.forkContainer}>
+            <TouchableOpacity style={styles.forkit} onPress={Actions.resultlightbox}>
+              <Image style={styles.logoText} source={require("../assets/DesktopCopy3trans.png")}/>
             </TouchableOpacity>
           </View>
         </View>
@@ -114,7 +106,7 @@ const mapDispatchToProps = (dispatch) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent'
+    backgroundColor: 'rgba(0, 0, 0, 1)'
   },
   background: {
     justifyContent: 'flex-start',
@@ -126,39 +118,32 @@ const styles = StyleSheet.create({
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
+    opacity: 0.8,
     height: verticalScale(667-70-50),
     width: scale(375)
   },
   nameContainer: {
     flex: 1,
-    borderBottomColor: "#00042E",
-    borderBottomWidth: moderateScale(2),
+    borderBottomColor: "#ddd3dc",
+    borderBottomWidth: moderateScale(0.5),
     width: scale(375),
     flexDirection: 'row'
   },
   detailsContainer: {
     flex: 3,
-    borderBottomColor: "#00042E",
-    borderBottomWidth: moderateScale(2),
+    borderBottomColor: "#ddd3dc",
+    borderBottomWidth: moderateScale(0.5),
     width: scale(375),
     flexDirection: 'row'
   },
   mapContainer: {
-    flex: 3,
-    borderBottomColor: "#00042E",
-    borderBottomWidth: moderateScale(2),
+    flex: 2,
     width: scale(375),
     justifyContent: 'center',
     alignItems: 'center'
   },
-  backContainer: {
+  forkContainer: {
     flex: 1,
-    flexDirection: 'row'
-  },
-  goContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     width: scale(375)
   },
   star: {
@@ -192,37 +177,12 @@ const styles = StyleSheet.create({
     margin: moderateScale(5),
     position: 'relative'
   },
-  restart: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#00042E',
-    borderRadius: 20,
-    margin: moderateScale(5)
-  },
-  back: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#00042E',
-    borderRadius: 20,
-    margin: moderateScale(5)
-  },
-  fork: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#00042E',
-    borderRadius: 20,
-    margin: moderateScale(5),
-    width: scale(375/2)
-  },
   textStyle: {
     fontSize: moderateScale(18),
     fontFamily: 'Futura',
     color: 'white'
   },
-  buttonStyle: {
+  nameText: {
     fontSize: moderateScale(20),
     fontFamily: 'Futura',
     color: 'white'
@@ -234,14 +194,27 @@ const styles = StyleSheet.create({
     opacity: 0.7
   },
   yelpIcon: {
-    height: verticalScale(55),
-    width: scale(140),
+    height: verticalScale(65),
+    width: scale(150),
     borderRadius: 20
   },
   openTableIcon: {
-    height: verticalScale(55),
-    width: scale(140),
+    height: verticalScale(65),
+    width: scale(150),
     borderRadius: 20
+  },
+  forkit: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#00042E",
+    borderRadius: moderateScale(40),
+    margin: scale(10),
+  },
+  logoText: {
+    height: verticalScale(90),
+    width: scale(275),
+    bottom: verticalScale(5)
   }
 });
 

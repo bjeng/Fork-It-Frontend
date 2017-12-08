@@ -82,50 +82,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row'
   },
-  restaurantPic: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  restaurantInfo: {
-    flex: 3
-  },
-  restaurantNameContainer: {
-    flex: 2,
-    borderBottomColor: "#00042E",
-    borderBottomWidth: moderateScale(2),
-    flexDirection: 'row'
-  },
-  restaurantName: {
-    flex: 3,
-    justifyContent: 'center'
-  },
-  star: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  restaurantDetails: {
-    flex: 3,
-    flexDirection: 'row'
-  },
-  restaurantStats: {
-    flex: 3,
-    justifyContent: 'center',
-  },
-  eatIcon: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  restart: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: "#00042E",
-    borderRadius: 20,
-    margin: moderateScale(10)
-  },
   textStyle: {
     fontFamily: 'Futura',
     color: 'white',
