@@ -25,7 +25,7 @@ const Login = ({}) => {
             </TouchableOpacity>
           </View>
           <View style={styles.buttonForm}>
-            <TouchableOpacity style={styles.loginButton}>
+            <TouchableOpacity style={styles.loginButton} onPress={Actions.discover}>
               <Text style={styles.loginText}> SIGN IN </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.fbButton}>
