@@ -75,13 +75,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row'
   },
-  listItem: {
-    borderBottomColor: "#00042E",
-    borderBottomWidth: moderateScale(2),
-    width: scale(375),
-    flex: 1,
-    flexDirection: 'row'
-  },
   textStyle: {
     fontFamily: 'Futura',
     color: 'white',
@@ -90,13 +83,13 @@ const styles = StyleSheet.create({
   restaurantIcon: {
     height: verticalScale(80),
     width: scale(80),
-    borderRadius: 40,
+    borderRadius: scale(40),
     opacity: 0.7
   },
   menuIcon: {
     height: verticalScale(60),
     width: scale(60),
-    borderRadius: 30
+    borderRadius: scale(30)
   },
   dice: {
     height: verticalScale(35),
@@ -109,7 +102,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: "#00042E",
-    borderRadius: scale(40),
+    borderRadius: moderateScale(10),
     margin: moderateScale(5),
     bottom: verticalScale(3)
   },
