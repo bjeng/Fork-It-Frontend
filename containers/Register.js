@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { LinearGradient } from 'expo';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import { Font } from 'expo';
-
+//
 const Register = ({}) => {
     return (
       <LinearGradient colors={['#303F4C', '#3B4955', '#AFAFAF']} style={styles.background} location={[0.3, 0.4, 1]}>
