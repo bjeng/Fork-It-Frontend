@@ -15,6 +15,9 @@ const SingleResult = ({}) => {
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/discoverHome.png")}/>
           <View style={styles.nameContainer}>
+            <View style={styles.name}>
+              <Text style={styles.nameText}>Name of the Restaurant testing again if its really long</Text>
+            </View>
             <View style={styles.star}>
               <StarRating
                 disabled={false}
@@ -25,26 +28,32 @@ const SingleResult = ({}) => {
                 emptyStarColor={'#ddd3dc'}
               />
             </View>
-            <View style={styles.name}>
-              <Text style={styles.nameText}>Name of the Restaurant testing again if its long</Text>
-            </View>
           </View>
           <View style={styles.detailsContainer}>
             <View style={styles.details}>
-              <Image style={styles.restaurantIcon} source={require("../assets/burger.jpg")}/>
-              <Text style={styles.textStyle}>123-456-7890</Text>
-              <StarRating
-                disabled={true}
-                maxStars={5}
-                rating={4}
-                starSize={20}
-                starColor={'#ecf000'}
-                emptyStarColor={'#ecf000'}
-              />
-              <Text style={styles.textStyle}>1,000 reviews on Yelp</Text>
-              <Text style={styles.textStyle}>100 miles from you</Text>
+              <View style={styles.restaurantPic}>
+                <Image style={styles.restaurantIcon} source={require("../assets/burger.jpg")}/>
+              </View>
+              <View style={styles.restaurantStats}>
+                <Text style={styles.textStyle}>American, Burgers</Text>
+                <View style={styles.rating}>
+                  <StarRating
+                    disabled={true}
+                    maxStars={5}
+                    rating={4}
+                    starSize={20}
+                    starColor={'#ecf000'}
+                    emptyStarColor={'#ecf000'}
+                  />
+                </View>
+                <Text style={styles.textStyle}>1,000 reviews on Yelp</Text>
+                <Text style={styles.textStyle}>1.0 miles from you</Text>
+              </View>
             </View>
-            <View style={styles.restaurantButtons}>
+            <View style={styles.actionBar}>
+              <TouchableOpacity style={styles.call}>
+                <Image style={styles.phoneIcon} source={require("../assets/phone.png")}/>
+              </TouchableOpacity>
               <TouchableOpacity style={styles.yelp}>
                 <Image style={styles.yelpIcon} source={require("../assets/yelp.jpg")}/>
               </TouchableOpacity>
@@ -52,10 +61,13 @@ const SingleResult = ({}) => {
                 <Image style={styles.openTableIcon} source={require("../assets/openTable.png")}/>
               </TouchableOpacity>
             </View>
+            <View style={styles.address}>
+              <Text>450 S 9th St San Francisco, CA 94103</Text>
+            </View>
           </View>
           <View style={styles.mapContainer}>
             <MapView
-              style={{ width: scale(300), height: verticalScale(150) }}
+              style={{ width: scale(375), height: verticalScale(205) }}
               region={{
                 latitude: 37.771728,
                 longitude: -122.409421,
@@ -124,20 +136,15 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     flex: 1,
-    borderBottomColor: "#ddd3dc",
-    borderBottomWidth: moderateScale(0.5),
     width: scale(375),
     flexDirection: 'row'
   },
   detailsContainer: {
     flex: 3,
-    borderBottomColor: "#ddd3dc",
-    borderBottomWidth: moderateScale(0.5),
     width: scale(375),
-    flexDirection: 'row'
   },
   mapContainer: {
-    flex: 2,
+    flex: 3,
     width: scale(375),
     justifyContent: 'center',
     alignItems: 'center'
@@ -153,29 +160,39 @@ const styles = StyleSheet.create({
   },
   name: {
     flex: 4,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: scale(5)
   },
   details: {
-    flex: 1,
+    flex: 6,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  restaurantButtons: {
-    flex: 1
   },
   yelp: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    margin: moderateScale(5),
+    backgroundColor: '#d32323',
+    borderRadius: moderateScale(4),
+    margin: moderateScale(2)
   },
   openTable: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 20,
-    margin: moderateScale(5),
-    position: 'relative'
+    backgroundColor: 'white',
+    borderRadius: moderateScale(4),
+    margin: moderateScale(2)
+  },
+  call: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderRadius: moderateScale(4),
+    margin: moderateScale(2)
   },
   textStyle: {
     fontSize: moderateScale(18),
@@ -188,33 +205,57 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   restaurantIcon: {
-    height: verticalScale(80),
-    width: scale(80),
-    borderRadius: 40,
+    height: verticalScale(100),
+    width: scale(100),
+    borderRadius: moderateScale(50),
     opacity: 0.7
   },
   yelpIcon: {
-    height: verticalScale(65),
-    width: scale(150),
-    borderRadius: 20
+    height: verticalScale(50),
+    width: scale(120),
   },
   openTableIcon: {
-    height: verticalScale(65),
-    width: scale(150),
-    borderRadius: 20
+    height: verticalScale(45),
+    width: scale(120),
+  },
+  phoneIcon: {
+    height: verticalScale(50),
+    width: scale(37)
   },
   forkit: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: "#00042E",
-    borderRadius: moderateScale(40),
-    margin: scale(10),
+    borderRadius: scale(10),
+    margin: scale(5),
   },
   logoText: {
     height: verticalScale(90),
     width: scale(275),
     bottom: verticalScale(5)
+  },
+  actionBar: {
+    flex: 3,
+    flexDirection: 'row',
+  },
+  address: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ddd3dc',
+  },
+  restaurantPic: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  restaurantStats: {
+    flex: 2,
+    paddingRight: scale(20),
+    justifyContent: 'space-around'
+  },
+  rating: {
+    width: scale(150)
   }
 });
 

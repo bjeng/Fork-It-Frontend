@@ -73,7 +73,7 @@ export default class RestResult extends React.Component {
 const styles = StyleSheet.create({
   listItem: {
     borderBottomColor: "#ddd3dc",
-    borderBottomWidth: moderateScale(0.5),
+    borderBottomWidth: scale(0.5),
     width: scale(375),
     flex: 1,
     flexDirection: 'row'
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     width: scale(90),
     borderRadius: scale(90/2),
     borderColor: 'black',
-    borderWidth: 0.2
+    borderWidth: scale(0.2)
   },
   restaurantInfo: {
     flex: 3,
@@ -145,6 +145,6 @@ const styles = StyleSheet.create({
   menuIcon: {
     height: verticalScale(50),
     width: scale(50),
-    borderRadius: 30
+    borderRadius: scale(30)
   }
 });
