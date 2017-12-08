@@ -142,16 +142,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  textStyle: {
-    fontFamily: 'Futura',
-    color: 'white',
-    fontSize: moderateScale(16)
-  },
-  buttonStyle: {
-    fontFamily: 'Futura',
-    color: 'white',
-    fontSize: moderateScale(20)
-  },
   menuIcon: {
     height: verticalScale(50),
     width: scale(50),
