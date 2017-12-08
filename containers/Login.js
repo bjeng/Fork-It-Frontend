@@ -5,8 +5,15 @@ import { connect } from 'react-redux';
 import { LinearGradient } from 'expo';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import { Font } from 'expo';
+import { addUserAll } from '../actions/UserActions.js';
 
-const Login = ({}) => {
+const Login = ({ addUser }) => {
+
+    const clickLogin = (firstName, lastName) => {
+        addUser(firstName, lastName);
+        Actions.discover();
+      }
+
     return (
       <LinearGradient colors={['#303F4C', '#3B4955', '#AFAFAF']} style={styles.background} location={[0.3, 0.4, 1]}>
         <View style={styles.container}>
@@ -28,7 +35,7 @@ const Login = ({}) => {
             <TouchableOpacity style={styles.loginButton} onPress={Actions.discover}>
               <Text style={styles.loginText}> SIGN IN </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.fbButton}>
+            <TouchableOpacity style={styles.fbButton} onPress={() => clickLogin('Hassan', 'Saab')}>
               <Image style={styles.fbIcon} source={require("../assets/fb.png")}/>
               <Text style={styles.fbText}> LOGIN WITH FACEBOOK </Text>
             </TouchableOpacity>
@@ -45,14 +52,18 @@ Login.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    console.log(state, state.user);
     return {
+      user: state.user
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    };
+      addUser: (firstName, lastName) => {
+        dispatch(addUserAll(firstName, lastName))
+    }
+  }
 };
 
 const styles = StyleSheet.create({
