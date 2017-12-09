@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 
-const DiscoverHome = ({ state }) => {
+const DiscoverHome = ({ user }) => {
     return (
       <View style={styles.container}>
         <Navbar/>
@@ -28,7 +28,7 @@ DiscoverHome.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-      state
+      user: state.user
     };
 };
 

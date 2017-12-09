@@ -8,7 +8,8 @@ let initialState = {
     singleForks: ['singleEventId1', 'singleEventId2'],
     multiForks: ['multiEventId1', 'multiEventId2'],
     favorites: ['restIds'],
-    os: 'iOS/Android'
+    os: 'iOS/Android',
+    success: false
   }
 }
 
@@ -27,6 +28,12 @@ const UserReducer = (state = initialState, action) => {
       // newState.favorites = action.favorites;
       // newState.os = action.os;
       return newState;
+    case 'LOGIN':
+      const stateCopy = Object.assign({}, state);
+      stateCopy.email = action.username;
+      stateCopy.password = action.password
+      stateCopy.success = true;
+      return stateCopy;
     default:
       return state;
   }

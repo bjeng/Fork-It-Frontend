@@ -6,4 +6,12 @@ function addUserAll(firstName, lastName) {
   }
 }
 
-export { addUserAll }
+function login(username, password) {
+  return {
+    type: 'LOGIN',
+    username: username,
+    password: password
+  }
+}
+
+export { addUserAll, login }
