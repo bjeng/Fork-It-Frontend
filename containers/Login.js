@@ -5,14 +5,22 @@ import { connect } from 'react-redux';
 import { LinearGradient } from 'expo';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import { Font } from 'expo';
-import { addUserAll } from '../actions/UserActions.js';
+import { addUserAll, login } from '../actions/UserActions.js';
 
-const Login = ({ addUser }) => {
+const Login = ({ addUser, handleLogin, user }) => {
 
-    const clickLogin = (firstName, lastName) => {
+    const clickFacebook = (firstName, lastName) => {
         addUser(firstName, lastName);
         Actions.discover();
       }
+
+    const clickLogin = (username, password) => {
+      //axios request here
+      //if success then login
+      handleLogin(username, password);
+      Actions.discover();
+      //if fail then do something here
+    }
 
     return (
       <LinearGradient colors={['#303F4C', '#3B4955', '#AFAFAF']} style={styles.background} location={[0.3, 0.4, 1]}>
@@ -32,10 +40,10 @@ const Login = ({ addUser }) => {
             </TouchableOpacity>
           </View>
           <View style={styles.buttonForm}>
-            <TouchableOpacity style={styles.loginButton} onPress={Actions.discover}>
+            <TouchableOpacity style={styles.loginButton} onPress={() => clickLogin('user', 'pass')}>
               <Text style={styles.loginText}> SIGN IN </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.fbButton} onPress={() => clickLogin('Hassan', 'Saab')}>
+            <TouchableOpacity style={styles.fbButton} onPress={() => clickFacebook('Hassan', 'Saab')}>
               <Image style={styles.fbIcon} source={require("../assets/fb.png")}/>
               <Text style={styles.fbText}> LOGIN WITH FACEBOOK </Text>
             </TouchableOpacity>
@@ -52,7 +60,7 @@ Login.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state, state.user);
+    // console.log(state, state.user);
     return {
       user: state.user
     };
@@ -60,8 +68,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      addUser: (firstName, lastName) => {
-        dispatch(addUserAll(firstName, lastName))
+    addUser: (firstName, lastName) => {
+      dispatch(addUserAll(firstName, lastName))
+    },
+    handleLogin: (username, password) => {
+      dispatch(login(username, password))
     }
   }
 };
