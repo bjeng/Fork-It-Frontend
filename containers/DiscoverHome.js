@@ -11,11 +11,16 @@ const DiscoverHome = ({ user }) => {
         <Navbar/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          <Text style={styles.eatText}>Eats</Text>
+          <View style={styles.discoverHead}>
+            <Text style={styles.discoverText}>Discover</Text>
+          </View>
+          <TouchableOpacity style={styles.playButton}>
+            <Text style={styles.playText}> Status </Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.playButton} onPress={Actions.eats1}>
             <Text style={styles.playText}> Single Player </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.playButtonBottom} onPress={Actions.eventform}>
+          <TouchableOpacity style={styles.playButton} onPress={Actions.eventform}>
             <Text style={styles.playText}> Multiplayer </Text>
           </TouchableOpacity>
         </View>
@@ -47,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'transparent',
     height: verticalScale(667-70-50),
-    width: scale(375),
+    width: scale(375)
   },
   backgroundColor: {
     top: verticalScale(0),
@@ -55,26 +60,22 @@ const styles = StyleSheet.create({
     height: verticalScale(667-70-50),
     width: scale(375)
   },
-  eatText: {
-    fontSize: scale(60),
+  discoverHead: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  discoverText: {
+    fontSize: moderateScale(60),
     fontFamily: 'Futura',
     color: 'white',
-    bottom: verticalScale(10)
   },
   playButton: {
-    height: verticalScale(35),
-    width: scale(175),
+    width: scale(250),
     backgroundColor: 'rgba(255,255,255,.40)',
     justifyContent: 'center',
-    borderRadius: 20,
-  },
-  playButtonBottom: {
-    height: verticalScale(35),
-    width: scale(175),
-    backgroundColor: 'rgba(255,255,255,.40)',
-    justifyContent: 'center',
-    borderRadius: 20,
-    top: verticalScale(15)
+    borderRadius: scale(20),
+    flex: 1,
+    marginBottom: verticalScale(50)
   },
   playText: {
     fontSize: moderateScale(20),

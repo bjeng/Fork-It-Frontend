@@ -7,21 +7,33 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import { Font } from 'expo';
 import { addUserAll, login } from '../actions/UserActions.js';
 
-const Login = ({ addUser, handleLogin, user }) => {
-
-    const clickFacebook = (firstName, lastName) => {
-        addUser(firstName, lastName);
-        Actions.discover();
-      }
-
-    const clickLogin = (username, password) => {
-      //axios request here
-      //if success then login
-      handleLogin(username, password);
-      Actions.discover();
-      //if fail then do something here
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: ""
     }
+  }
 
+componentDidMount() {
+  console.log('mounted')
+}
+
+clickFacebook(firstName, lastName) {
+    this.props.addUser(firstName, lastName);
+    Actions.discover();
+}
+
+clickLogin(username, password) {
+  //axios request here
+  //if success then login
+  this.props.handleLogin(username, password);
+  Actions.discover();
+  //if fail then do something here
+}
+
+render() {
     return (
       <LinearGradient colors={['#303F4C', '#3B4955', '#AFAFAF']} style={styles.background} location={[0.3, 0.4, 1]}>
         <View style={styles.container}>
@@ -29,21 +41,21 @@ const Login = ({ addUser, handleLogin, user }) => {
           <View style={styles.inputForm}>
             <View style={styles.input}>
               <Image style={styles.userIcon} source={require("../assets/username.png")}/>
-              <TextInput style={styles.inputText} placeholder={'Email'}/>
+              <TextInput style={styles.inputText} placeholder={'Email'} value={this.state.username} onChangeText={(text) => this.setState({username: text})}/>
             </View>
             <View style={styles.input}>
               <Image style={styles.passIcon} source={require("../assets/password.png")}/>
-              <TextInput style={styles.inputText} placeholder={'Password'}/>
+              <TextInput style={styles.inputText} placeholder={'Password'} value={this.state.password} onChangeText={(text) => this.setState({password: text})}/>
             </View>
             <TouchableOpacity>
               <Text style={styles.forgetText}>Forget Your Password?</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonForm}>
-            <TouchableOpacity style={styles.loginButton} onPress={() => clickLogin('user', 'pass')}>
+            <TouchableOpacity style={styles.loginButton} onPress={() => this.clickLogin(this.state.username, this.state.password)}>
               <Text style={styles.loginText}> SIGN IN </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.fbButton} onPress={() => clickFacebook('Hassan', 'Saab')}>
+            <TouchableOpacity style={styles.fbButton} onPress={() => this.clickFacebook('Hassan', 'Saab')}>
               <Image style={styles.fbIcon} source={require("../assets/fb.png")}/>
               <Text style={styles.fbText}> LOGIN WITH FACEBOOK </Text>
             </TouchableOpacity>
@@ -54,6 +66,7 @@ const Login = ({ addUser, handleLogin, user }) => {
         </View>
       </LinearGradient>
     );
+  }
 }
 
 Login.propTypes = {
