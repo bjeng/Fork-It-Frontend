@@ -28,6 +28,7 @@ import EventForm from './containers/EventForm.js';
 import StatusPage from './containers/StatusPage.js';
 import TestQuestion from './containers/TestQuestion.js';
 import MultiResult from './containers/MultiResult.js';
+import InviteFriends from './containers/InviteFriends.js';
 
 const Scenes = Actions.create(
   <Lightbox>
@@ -53,6 +54,7 @@ const Scenes = Actions.create(
         <Scene key="personaldata" component={PersonalData} hideNavBar={true}/>
         <Scene key="search" component={Search} hideNavBar={true}/>
         <Scene key="eventform" component={EventForm} hideNavBar={true}/>
+        <Scene key="invitefriends" component={InviteFriends} hideNavBar={true}/>
         <Scene key="statuspage" component={StatusPage} hideNavBar={true}/>
         <Scene key="multiresult" component={MultiResult} hideNavBar={true}/>
       </Scene>
