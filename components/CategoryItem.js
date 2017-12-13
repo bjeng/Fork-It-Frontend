@@ -3,9 +3,8 @@ import {StyleSheet,Text,View,Image,TouchableOpacity,TextInput} from 'react-nativ
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
-import StarRating from 'react-native-star-rating';
 
-class FriendItem extends Component{
+class CategoryItem extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -14,30 +13,25 @@ class FriendItem extends Component{
 
 
     render(){
-      console.log('props is, ', this.props)
         return (
             <View style={styles.container} >
               <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <Image source={require('../assets/DesktopCopy2Black.png')} style={{height: 30, width: 30}}/>
               </View>
-              <View style={{flex: 4, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>{this.props.title}</Text>
+              <View style={{flex: 3, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Cuisine</Text>
               </View>
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <StarRating
-                  disabled={false}
-                  maxStars={1}
-                  rating={0}
-                  starSize={40}
-                  starColor={'#ddd3dc'}
-                  emptyStarColor={'#ddd3dc'}
-                />
+              <View style={{flex: 3, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>Mexican</Text>
+              </View>
+              <View style={{flex: 3, justifyContent: 'center', alignItems: 'center'}}>
+                <Text>People</Text>
               </View>
             </View>
         );
     }
 }
-export default FriendItem;
+export default CategoryItem;
 
 var styles = StyleSheet.create({
   container: {

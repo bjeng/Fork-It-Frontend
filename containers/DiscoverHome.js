@@ -14,8 +14,8 @@ const DiscoverHome = ({ user }) => {
           <View style={styles.discoverHead}>
             <Text style={styles.discoverText}>Discover</Text>
           </View>
-          <TouchableOpacity style={styles.playButton}>
-            <Text style={styles.playText}> Status </Text>
+          <TouchableOpacity style={styles.playButton} onPress={Actions.myevents}>
+            <Text style={styles.playText}>My Events</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.playButton} onPress={Actions.eats1}>
             <Text style={styles.playText}> Single Player </Text>
