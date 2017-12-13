@@ -73,7 +73,6 @@ Login.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    // console.log(state, state.user);
     return {
       user: state.user
     };

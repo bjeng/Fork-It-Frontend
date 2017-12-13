@@ -31,6 +31,8 @@ import MultiResult from './containers/MultiResult.js';
 import InviteFriends from './containers/InviteFriends.js';
 import MyEvents from './containers/MyEvents.js';
 
+const store = configureStore();
+
 const Scenes = Actions.create(
   <Lightbox>
     <Scene key="root">
@@ -65,14 +67,11 @@ const Scenes = Actions.create(
   </Lightbox>
 );
 
-const ConnectedRouter = connect()(Router);
-const store = configureStore();
-
 export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <ConnectedRouter scenes={Scenes}/>
+        <Router scenes={Scenes}/>
       </Provider>
     )
   }

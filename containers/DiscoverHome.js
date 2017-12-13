@@ -12,16 +12,19 @@ const DiscoverHome = ({ user }) => {
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
           <View style={styles.discoverHead}>
-            <Text style={styles.discoverText}>Discover</Text>
+            <Text style={styles.discoverText}>Eats</Text>
           </View>
           <TouchableOpacity style={styles.playButton} onPress={Actions.myevents}>
             <Text style={styles.playText}>My Events</Text>
+            <Image style={styles.statusIcon} source={require("../assets/eventstatusWhite.png")}/>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.playButton} onPress={Actions.eventform} >
+            <Text style={styles.playText}> Multiplayer </Text>
+            <Image style={styles.multiIcon} source={require("../assets/groupWhite.png")}/>
           </TouchableOpacity>
           <TouchableOpacity style={styles.playButton} onPress={Actions.eats1}>
-            <Text style={styles.playText}> Single Player </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.playButton} onPress={Actions.eventform}>
-            <Text style={styles.playText}> Multiplayer </Text>
+            <Text style={styles.playText}> Singleplayer</Text>
+            <Image style={styles.singleIcon} source={require("../assets/single.png")}/>
           </TouchableOpacity>
         </View>
       </View>
@@ -65,24 +68,40 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   discoverText: {
-    fontSize: moderateScale(60),
+    fontSize: moderateScale(80),
     fontFamily: 'Futura',
     color: 'white',
   },
   playButton: {
-    width: scale(250),
+    width: scale(315),
     backgroundColor: 'rgba(255,255,255,.40)',
-    justifyContent: 'center',
-    borderRadius: scale(20),
-    flex: 1,
-    marginBottom: verticalScale(50)
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderRadius: scale(40),
+    flex: 0.5,
+    marginBottom: verticalScale(50),
   },
   playText: {
-    fontSize: moderateScale(20),
+    fontSize: moderateScale(25),
     fontFamily: 'Futura',
     color: 'white',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    left: scale(20)
   },
+  statusIcon: {
+    height: verticalScale(100),
+    width: scale(85),
+  },
+  multiIcon: {
+    height: verticalScale(100),
+    width: scale(100),
+  },
+  singleIcon: {
+    height: verticalScale(60),
+    width: scale(40),
+    right: scale(30),
+    top: verticalScale(10)
+  }
 });
 
 export default connect(
