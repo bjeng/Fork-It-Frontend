@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity,ScrollView,TextInput } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, ScrollView, TextInput, SectionList, Header } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
@@ -11,34 +11,17 @@ class InviteFriends extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        A: ['some','entries','are here'],
-        B: ['some','entries','are here'],
-        C: ['some','entries','are here'],
-        D: ['some','entries','are here'],
-        E: ['some','entries','are here'],
-        F: ['some','entries','are here'],
-        G: ['some','entries','are here'],
-        H: ['some','entries','are here'],
-        I: ['some','entries','are here'],
-        J: ['some','entries','are here'],
-        K: ['some','entries','are here'],
-        L: ['some','entries','are here'],
-        M: ['some','entries','are here'],
-        N: ['some','entries','are here'],
-        O: ['some','entries','are here'],
-        P: ['some','entries','are here'],
-        Q: ['some','entries','are here'],
-        R: ['some','entries','are here'],
-        S: ['some','entries','are here'],
-        T: ['some','entries','are here'],
-        U: ['some','entries','are here'],
-        V: ['some','entries','are here'],
-        W: ['some','entries','are here'],
-        X: ['some','entries','are here'],
-        Y: ['some','entries','are here'],
-        Z: ['some','entries','are here'],
-      }
+      data: [
+        {title: "A", data: ["apple", "artichoke"]},
+        {title: "B", data: ["banana", "bacon"]},
+        {title: "C", data: ["cookie", "cheese", "chocolate", "curry", "cake"]},
+        {title: "D", data: ["doritos"]},
+        {title: "E", data: ["eggs"]},
+        {title: "F", data: ["falafel", "fudge"]},
+        {title: "G", data: ["gouda", "gyro"]},
+        {title: "H", data: ["hot dog", "hero"]},
+        {title: "I", data: ["ice cream"]},
+      ]
     }
   }
 
@@ -56,7 +39,7 @@ class InviteFriends extends React.Component {
             <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
               <Text>Friends O' Friends</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <TouchableOpacity onPress={Actions.statuspage} style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
               <Text>Create Button</Text>
             </TouchableOpacity>
           </View>
@@ -70,9 +53,14 @@ class InviteFriends extends React.Component {
               cellHeight={100}
               sectionHeaderHeight={22.5}
             /> */}
+            {/* <FriendItem/>
             <FriendItem/>
-            <FriendItem/>
-            <FriendItem/>
+            <FriendItem/> */}
+            <SectionList
+              renderItem={({item}) => <FriendItem title={item}/>}
+              renderSectionHeader={({section}) => <Text>{section.title}</Text>}
+              sections={this.state.data}
+            />
           </View>
         </View>
       </View>
