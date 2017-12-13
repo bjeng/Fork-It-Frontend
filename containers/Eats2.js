@@ -21,31 +21,27 @@ const Eats2 = ({}) => {
             <Text style={styles.topText}>What type of cuisine?</Text>
           </View>
           <View style={styles.colSubContainer}>
-            <View style={styles.rowSubContainer}>
-              <TouchableOpacity style={styles.optionLeft}>
-                <Image style={styles.mexican} source={require("../assets/taco.png")}/>
-                <Text style={styles.optionText}>Mexican</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.optionRight}>
-                <Image style={styles.japanese} source={require("../assets/japanese.png")}/>
-                <Text style={styles.optionText}>Japanese</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.rowSubContainer}>
-              <TouchableOpacity style={styles.optionLeft}>
-                <Image style={styles.american} source={require("../assets/american.png")}/>
-                <Text style={styles.optionText}>American</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.optionRight}>
-                <Image style={styles.italian} source={require("../assets/italian.png")}/>
-                <Text style={styles.optionText}>Italian</Text>
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.option}>
+              <Text style={styles.optionText}>Mexican</Text>
+              <Image style={styles.mexican} source={require("../assets/taco.png")}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
+              <Text style={styles.optionText}>Japanese</Text>
+              <Image style={styles.japanese} source={require("../assets/japanese.png")}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
+              <Text style={styles.optionText}>American</Text>
+              <Image style={styles.american} source={require("../assets/american.png")}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
+              <Text style={styles.optionText}>Italian</Text>
+              <Image style={styles.italian} source={require("../assets/italian.png")}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={Actions.eats3}>
+              <Text style={styles.gambleText}> Take a Gamble </Text>
+              <Image style={styles.dice} source={require("../assets/red-dice-512.png")}/>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={[styles.optionBottom, styles.rowSubContainer]} onPress={Actions.eats3}>
-            <Text style={styles.gambleText}> Take a Gamble </Text>
-            <Image style={styles.dollarSigns} source={require("../assets/red-dice-512.png")}/>
-          </TouchableOpacity>
         </View>
       </View>
     );
@@ -55,7 +51,6 @@ Eats2.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
     };
 };
@@ -69,6 +64,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   background: {
     justifyContent: 'flex-start',
@@ -84,12 +81,10 @@ const styles = StyleSheet.create({
     width: scale(375)
   },
   topTile: {
-    height: verticalScale(250),
+    height: verticalScale(205),
     width: scale(375),
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomWidth: moderateScale(1),
-    borderBottomColor: 'white',
   },
   topText: {
     fontSize: scale(45),
@@ -97,13 +92,14 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center'
   },
-  rowSubContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   colSubContainer: {
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: scale(375)
+  },
+  rowSubContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -112,72 +108,59 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Futura'
   },
-  optionLeft: {
-    borderTopWidth: moderateScale(1),
-    borderTopColor: 'white',
-    borderBottomWidth: moderateScale(1),
-    borderBottomColor: 'white',
-    borderRightWidth: moderateScale(1),
-    borderRightColor: 'white',
-    height: verticalScale(105),
-    width: scale(375/2),
+  option: {
+    borderWidth: moderateScale(3),
+    borderColor: 'white',
+    backgroundColor: 'rgba(255,255,255,.20)',
+    height: verticalScale(65),
+    width: scale(340),
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  mexican: {
-    height: verticalScale(55),
-    width: scale(75)
-  },
-  japanese: {
-    height: verticalScale(55),
-    width: scale(65)
-  },
-  american: {
-    height: verticalScale(35),
-    width: scale(70),
-    marginTop: verticalScale(10),
-    marginBottom: verticalScale(10)
-  },
-  italian: {
-    height: verticalScale(35),
-    width: scale(80),
-    marginTop: verticalScale(10),
-    marginBottom: verticalScale(10)
-  },
-  optionRight: {
-    borderTopWidth: moderateScale(1),
-    borderTopColor: 'white',
-    borderBottomWidth: moderateScale(1),
-    borderBottomColor: 'white',
-    borderLeftWidth: moderateScale(1),
-    borderLeftColor: 'white',
-    height: verticalScale(105),
-    width: scale(375/2),
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
+    borderRadius: scale(50),
+    margin: moderateScale(6)
   },
   optionText: {
     fontFamily: 'Futura',
     color: 'white',
-    fontSize: moderateScale(30)
+    fontSize: moderateScale(30),
+    margin: scale(10)
   },
   dollarSigns: {
-    height: verticalScale(35),
-    width: scale(35)
+    height: verticalScale(20),
+    width: scale(20)
   },
-  optionBottom: {
-    borderTopWidth: moderateScale(1),
-    borderTopColor: 'white',
-    height: verticalScale(667-70-250-210),
-    width: scale(375),
-    justifyContent: 'center',
+  dollarCols: {
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   gambleText: {
     fontFamily: 'Futura',
     color: 'white',
-    fontSize: moderateScale(38)
-  }
+    fontSize: moderateScale(30)
+  },
+  dice: {
+    height: verticalScale(35),
+    width: scale(35)
+  },
+  mexican: {
+    height: verticalScale(50),
+    width: scale(70)
+  },
+  japanese: {
+    height: verticalScale(50),
+    width: scale(60)
+  },
+  american: {
+    height: verticalScale(30),
+    width: scale(65),
+  },
+  italian: {
+    height: verticalScale(30),
+    width: scale(80),
+  },
+
 });
 
 export default connect(
