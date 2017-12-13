@@ -29,6 +29,7 @@ import StatusPage from './containers/StatusPage.js';
 import TestQuestion from './containers/TestQuestion.js';
 import MultiResult from './containers/MultiResult.js';
 import InviteFriends from './containers/InviteFriends.js';
+import MyEvents from './containers/MyEvents.js';
 
 const Scenes = Actions.create(
   <Lightbox>
@@ -57,6 +58,7 @@ const Scenes = Actions.create(
         <Scene key="invitefriends" component={InviteFriends} hideNavBar={true}/>
         <Scene key="statuspage" component={StatusPage} hideNavBar={true}/>
         <Scene key="multiresult" component={MultiResult} hideNavBar={true}/>
+        <Scene key="myevents" component={MyEvents} hideNavBar={true}/>
       </Scene>
     </Scene>
     <Scene key="resultlightbox" component={ResultLightbox} hideNavBar={true}/>
