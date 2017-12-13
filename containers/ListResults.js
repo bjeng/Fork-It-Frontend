@@ -102,8 +102,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: "#00042E",
-    borderRadius: moderateScale(10),
+    borderRadius: scale(35),
     margin: moderateScale(5),
+    width: scale(300),
     bottom: verticalScale(3)
   },
   gambleText: {

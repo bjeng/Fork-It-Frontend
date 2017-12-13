@@ -16,7 +16,7 @@ const SingleResult = ({}) => {
           <Image style={styles.backgroundColor} source={require("../assets/discoverHome.png")}/>
           <View style={styles.nameContainer}>
             <View style={styles.name}>
-              <Text style={styles.nameText}>Name of the Restaurant testing again if its really long</Text>
+              <Text style={styles.nameText}>Shakeshack</Text>
             </View>
             <View style={styles.star}>
               <StarRating
@@ -105,7 +105,6 @@ SingleResult.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
     };
 };
@@ -137,7 +136,8 @@ const styles = StyleSheet.create({
   nameContainer: {
     flex: 1,
     width: scale(375),
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
   },
   detailsContainer: {
     flex: 3,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   name: {
     flex: 4,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginLeft: scale(5)
   },
   details: {
@@ -200,9 +200,11 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   nameText: {
-    fontSize: moderateScale(20),
+    fontSize: moderateScale(35),
     fontFamily: 'Futura',
-    color: 'white'
+    color: 'white',
+    left: scale(20),
+    top: verticalScale(10)
   },
   restaurantIcon: {
     height: verticalScale(100),
@@ -224,11 +226,12 @@ const styles = StyleSheet.create({
   },
   forkit: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: "#00042E",
-    borderRadius: scale(10),
-    margin: scale(5),
+    borderRadius: scale(35),
+    margin: moderateScale(5),
   },
   logoText: {
     height: verticalScale(90),

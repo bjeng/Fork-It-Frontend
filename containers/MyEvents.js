@@ -4,8 +4,9 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
-import EventItem from '../components/EventItem'
+import EventItem from '../components/EventItem';
 import CalendarStrip from 'react-native-calendar-strip';
+import MyEventBar from '../components/MyEventBar.js';
 
 class MyEvents extends React.Component {
   constructor(props) {
@@ -18,12 +19,19 @@ class MyEvents extends React.Component {
         <Navbar/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          <View style={styles.headerContainer}>
-            <TouchableOpacity style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>AAAAAAAAAAAAAA</Text></TouchableOpacity>
-            <TouchableOpacity style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>BBBBBBBBBBBBBB</Text></TouchableOpacity>
-          </View>
+          <MyEventBar/>
           <View style={styles.calendarContainer}>
-            <CalendarStrip style={{height: 100, paddingTop: 20, paddingBottom: 10}}/>
+            <CalendarStrip
+              style={{height: 100, paddingTop: 20, paddingBottom: 10}}
+              calendarHeaderStyle={styles.calHeader}
+              calendarColor={'rgba(255,255,255,.20)'}
+              dateNumberStyle={styles.dateNumber}
+              dateNameStyle={styles.dateName}
+              weekendDateNameStyle={styles.dateName}
+              weekendDateNumberStyle={styles.dateNumber}
+              highlightDateNumberStyle={{color: 'white'}}
+              highlightDateNameStyle={{color: 'white'}}
+              />
           </View>
           <View style={styles.listContainer}>
             <ScrollView>
@@ -57,7 +65,7 @@ const mapDispatchToProps = (dispatch) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0, 0, 0, 1)'
   },
   background: {
     justifyContent: 'center',
@@ -77,7 +85,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderColor: 'white',
     borderBottomWidth: 1,
-    width: scale(375)
+    width: scale(375),
   },
   calendarContainer: {
     flex: 2,
@@ -85,12 +93,28 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: scale(375)
   },
+  calHeader: {
+    fontFamily: 'Futura',
+    fontWeight: '100',
+    color: 'white',
+    bottom: verticalScale(5)
+  },
+  dateNumber: {
+    fontFamily: 'Futura',
+    fontWeight: '100',
+    color: 'white',
+  },
+  dateName: {
+    fontFamily: 'Futura',
+    fontWeight: '100',
+    color: 'white',
+  },
   listContainer: {
     flex: 5,
     borderColor: 'white',
     borderBottomWidth: 1,
     width: scale(375)
-  }
+  },
 });
 
 export default connect(
