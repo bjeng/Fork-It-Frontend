@@ -5,39 +5,32 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import EventItem from '../components/EventItem';
-import CalendarStrip from 'react-native-calendar-strip';
 import MyEventBar from '../components/MyEventBar.js';
+import Calendar from '../components/Calendar.js';
+import ProfPic from '../assets/profile.png';
 
 class MyEvents extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <View style={styles.container}>
         <Navbar/>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
           <MyEventBar atext={"Ongoing"} btext={"Planned"}/>
-          <View style={styles.calendarContainer}>
-            <CalendarStrip
-              style={{height: 100, paddingTop: 20, paddingBottom: 10}}
-              calendarHeaderStyle={styles.calHeader}
-              calendarColor={'rgba(255,255,255,.20)'}
-              dateNumberStyle={styles.dateNumber}
-              dateNameStyle={styles.dateName}
-              weekendDateNameStyle={styles.dateName}
-              weekendDateNumberStyle={styles.dateNumber}
-              highlightDateNumberStyle={{color: 'white'}}
-              highlightDateNameStyle={{color: 'white'}}
-              />
+          <Calendar/>
+          <View style={styles.masterBar}>
+            <Text style={styles.masterBarText}>All Upcoming</Text>
           </View>
           <View style={styles.listContainer}>
             <ScrollView>
+              <View style={styles.otherBar}>
+                <Text style={styles.otherBarText}>This Week</Text>
+              </View>
+              <EventItem host={ProfPic}/>
               <EventItem />
               <EventItem />
-              <EventItem />
+              <View style={styles.otherBar}>
+                <Text style={styles.otherBarText}>Next Week</Text>
+              </View>
               <EventItem />
               <EventItem />
             </ScrollView>
@@ -52,7 +45,6 @@ MyEvents.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
     };
 };
@@ -70,7 +62,7 @@ const styles = StyleSheet.create({
   background: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: '#F8F8F8',
     height: verticalScale(667-70-50),
     width: scale(375),
   },
@@ -80,34 +72,29 @@ const styles = StyleSheet.create({
     height: verticalScale(667-70-50),
     width: scale(375)
   },
-  headerContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    borderColor: 'white',
-    borderBottomWidth: 1,
+  masterBar: {
+    backgroundColor: '#646464',
     width: scale(375),
+    flex: 0.4,
+    justifyContent: 'center'
   },
-  calendarContainer: {
-    flex: 2,
-    borderColor: 'white',
-    borderBottomWidth: 1,
-    width: scale(375)
-  },
-  calHeader: {
+  masterBarText: {
     fontFamily: 'Futura',
-    fontWeight: '100',
     color: 'white',
-    bottom: verticalScale(5)
+    left: scale(10),
+    fontSize: moderateScale(13)
   },
-  dateNumber: {
-    fontFamily: 'Futura',
-    fontWeight: '100',
-    color: 'white',
+  otherBar: {
+    backgroundColor: '#BFBFBF',
+    width: scale(375),
+    flex: 0.4,
+    justifyContent: 'center'
   },
-  dateName: {
+  otherBarText: {
     fontFamily: 'Futura',
-    fontWeight: '100',
     color: 'white',
+    left: scale(10),
+    fontSize: moderateScale(13)
   },
   listContainer: {
     flex: 5,
