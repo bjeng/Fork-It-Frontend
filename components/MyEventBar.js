@@ -7,53 +7,27 @@ import Dash from 'react-native-dash';
 export default class MyEventBar extends React.Component {
   constructor() {
     super()
-    this.state = {
-      aCircle: true,
-      bCircle: false,
-      barText: ''
-    }
-  }
-
-  componentDidMount() {
-    this.setState({
-      barText: this.props.atext
-    })
-  }
-
-  aClick(){
-    this.setState({
-      aCircle: true,
-      bCircle: false,
-      barText: this.props.atext
-    })
-    this.props.alink()
-  }
-
-  bClick(){
-    this.setState({
-      aCircle: false,
-      bCircle: true,
-      barText: this.props.btext
-    })
-    this.props.blink()
   }
 
   render() {
+    const aOn = this.props.title === "Ongoing" || this.props.title === "Facts"
+    const bOn = this.props.title === "Planned" || this.props.title === "Friends"
+
     return (
       <View style={styles.container}>
         <View style={styles.subContainer}>
-          <TouchableOpacity onPress={() => this.aClick()}>
-            {this.state.aCircle ? <Image style={styles.circle} source={require("../assets/circleSelectA.png")}/>
+          <TouchableOpacity onPress={() => this.props.aLink()}>
+            {aOn ? <Image style={styles.circle} source={require("../assets/circleSelectA.png")}/>
           : <Image style={styles.unselectCircle} source={require("../assets/circleUnselectA.png")}/>}
           </TouchableOpacity>
-          {this.state.aCircle ? <Image style={styles.point} source={require("../assets/subMenuTri.png")}/>
+            {aOn ? <Image style={styles.point} source={require("../assets/subMenuTriGrey.png")}/>
           : null}
         </View>
-        <Text style={styles.minibarText}>{this.state.barText}</Text>
-        <TouchableOpacity style={styles.subContainer} onPress={() => this.bClick()}>
-          {this.state.bCircle ? <Image style={styles.circle} source={require("../assets/circleSelectB.png")}/>
+        <Text style={styles.minibarText}>{this.props.title}</Text>
+        <TouchableOpacity style={styles.subContainer} onPress={() => this.props.bLink()}>
+            {bOn ? <Image style={styles.circle} source={require("../assets/circleSelectB.png")}/>
           : <Image style={styles.unselectCircle} source={require("../assets/circleUnselectB.png")}/>}
-          {this.state.bCircle ? <Image style={styles.point} source={require("../assets/subMenuTri.png")}/>
+            {bOn ? <Image style={styles.point} source={require("../assets/subMenuTriGrey.png")}/>
           : null}
         </TouchableOpacity>
 
@@ -66,7 +40,7 @@ const styles = StyleSheet.create({
   container: {
     height: verticalScale(60),
     width: scale(375),
-    backgroundColor: "white",
+    backgroundColor: "#646464",
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -88,7 +62,7 @@ const styles = StyleSheet.create({
   },
   minibarText: {
     fontFamily: 'Futura',
-    color: 'black',
+    color: 'white',
     fontSize: moderateScale(26),
     textAlign: 'center'
   },

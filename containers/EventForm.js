@@ -4,27 +4,26 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
-import Expandable from '../components/Expandable.js';
 import MyEventBar from '../components/MyEventBar.js';
+import ExpandableTitle from '../components/ExpandableTitle.js';
+import ExpandableDate from '../components/ExpandableDate.js';
+import ExpandableMeal from '../components/ExpandableMeal.js';
+import ExpandableLocation from '../components/ExpandableLocation.js';
+import ExpandableCuisine from '../components/ExpandableCuisine.js';
 
 const EventForm = ({}) => {
     return (
       <View style={styles.container}>
         <Navbar/>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          {/* <View style={styles.headerContainer}>
-            <TouchableOpacity style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>AAAAAAAAAAAAAA</Text></TouchableOpacity>
-            <TouchableOpacity onPress={Actions.invitefriends} style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>BBBBBBBBBBBBBB</Text></TouchableOpacity>
-          </View> */}
-          <MyEventBar atext={"Facts"} btext={"Friends"} alink={() => Actions.eventform()} blink={() => Actions.invitefriends()}/>
+          <MyEventBar title={"Facts"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/>
           <View style={styles.optionsContainer}>
             <ScrollView>
-              <Expandable category={"Title"}/>
-              <Expandable category={"Date"}/>
-              <Expandable category={"Meal"}/>
-              <Expandable category={"Location"}/>
-              <Expandable category={"Cuisine"}/>
+              <ExpandableTitle/>
+              <ExpandableDate/>
+              <ExpandableMeal/>
+              <ExpandableLocation/>
+              <ExpandableCuisine/>
             </ScrollView>
           </View>
           <TouchableOpacity style={styles.nextContainer}>
@@ -39,7 +38,6 @@ EventForm.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
     };
 };
@@ -57,15 +55,9 @@ const styles = StyleSheet.create({
   background: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: '#F8F8F8',
     height: verticalScale(667-70-50),
     width: scale(375),
-  },
-  backgroundColor: {
-    top: verticalScale(0),
-    position: 'absolute',
-    height: verticalScale(667-70-50),
-    width: scale(375)
   },
   headerContainer: {
     flex: 1,

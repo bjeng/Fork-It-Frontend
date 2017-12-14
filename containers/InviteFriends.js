@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import FriendItem from '../components/FriendItem.js';
+import MyEventBar from '../components/MyEventBar.js';
 
 class InviteFriends extends React.Component {
   constructor(props) {
@@ -29,14 +30,10 @@ class InviteFriends extends React.Component {
       <View style={styles.container}>
         <Navbar/>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          <View style={styles.headerContainer}>
-            <TouchableOpacity onPress={Actions.eventform} style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>AAAAAAAAAAAAAA</Text></TouchableOpacity>
-            <TouchableOpacity style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>BBBBBBBBBBBBBB</Text></TouchableOpacity>
-          </View>
+          <MyEventBar title={"Friends"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/>
           <View style={styles.createContainer}>
             <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <Text>Friends O' Friends</Text>
+              <Text>Friends O Friends</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={Actions.statuspage} style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
               <Text>Create Button</Text>

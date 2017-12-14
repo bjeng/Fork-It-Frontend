@@ -4,20 +4,19 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 
-class Expandable extends Component{
+class ExpandableLocation extends Component{
     constructor(props){
         super(props);
         this.state = {       //Step 3
-            category       : props.category,
-            title : "test",
-            expanded    : false,
-            animation   : new Animated.Value(84)
+            title: "test",
+            expanded: false,
+            animation: new Animated.Value(84)
         };
     }
 
     toggle(){
-      let initialValue    = this.state.expanded? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
-      finalValue      = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
+      let initialValue = this.state.expanded? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
+      finalValue = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
 
       this.setState({
           expanded : !this.state.expanded  //Step 2
@@ -44,7 +43,6 @@ class Expandable extends Component{
         });
     }
 
-
     render(){
         //Step 5
         // console.log('expandable state', this.state)
@@ -56,24 +54,23 @@ class Expandable extends Component{
                       underlayColor="#f1f1f1">
                       <Image
                           style={styles.buttonImage}
-                          source={require('../assets/DesktopCopy2Black.png')}
+                          source={require('../assets/locationMGrey.png')}
                       ></Image>
                   </View>
                     <View style={styles.title}>
-                      <Text style={styles.titleText}>{this.state.category}</Text>
+                      <Text style={styles.titleText}>Location</Text>
                     </View>
                     <View
                         style={styles.button}
                         underlayColor="#f1f1f1">
                         <Image
-                            style={styles.buttonImage}
-                            source={require('../assets/DesktopCopy2Black.png')}
+                            style={styles.checkImage}
+                            source={require('../assets/checkMGrey.png')}
                         ></Image>
                     </View>
                 </TouchableOpacity>
 
                 <View style={styles.body} onLayout={this._setMaxHeight.bind(this)}>
-                    {/* {this.props.children} */}
                     <Text>
                       HELLO JUST TESTING WHAT THIS DOES AND TO SEE IF IT SHOWS UP AND EVERYTHING
                       LETS MAKE IT A LITTLE LONGER SO ITS BETTER TO SEE ALL THE EXPANDING AND COLLAPSING AND WHATNOT
@@ -85,7 +82,7 @@ class Expandable extends Component{
         );
     }
 }
-export default Expandable;
+export default ExpandableLocation;
 
 var styles = StyleSheet.create({
     container: {
@@ -95,20 +92,20 @@ var styles = StyleSheet.create({
     },
     titleContainer: {
       flexDirection: 'row',
-      borderColor: '#fff',
-      borderBottomWidth: scale(1),
+      borderColor: '#A2A2A2',
+      borderBottomWidth: moderateScale(0.7),
       height: verticalScale(84)
     },
     title: {
-      flex    : 1,
-      padding : 10,
+      flex: 1,
+      padding: 10,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'flex-start'
     },
     titleText: {
-      color   :'white',
-      fontWeight:'bold',
-      fontSize: moderateScale(20),
+      color:'#646464',
+      fontWeight:'300',
+      fontSize: moderateScale(30),
     },
     button: {
       flex: 1,
@@ -116,8 +113,12 @@ var styles = StyleSheet.create({
       alignItems: 'center'
     },
     buttonImage: {
-      width: 30,
-      height: 25
+      width: 25,
+      height: 40
+    },
+    checkImage: {
+      width: 35,
+      height: 35
     },
     body: {
       padding: 10,
