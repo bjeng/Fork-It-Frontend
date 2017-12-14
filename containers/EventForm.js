@@ -28,7 +28,7 @@ const EventForm = ({}) => {
             </ScrollView>
           </View>
           <TouchableOpacity style={styles.nextContainer}>
-            <TouchableOpacity onPress={Actions.invitefriends}><Text>NEXT BUTTON</Text></TouchableOpacity>
+            <TouchableOpacity onPress={Actions.invitefriends}><Text style={styles.nextText}>NEXT</Text></TouchableOpacity>
           </TouchableOpacity>
         </View>
       </View>
@@ -83,7 +83,15 @@ const styles = StyleSheet.create({
     borderTopWidth: scale(1),
     width: scale(375),
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'flex-start',
+    backgroundColor: 'silver',
+    opacity: 0.9,
+    paddingLeft: scale(30)
+  },
+  nextText: {
+    color: 'white',
+    fontFamily: 'Futura',
+    fontSize: moderateScale(30)
   }
 });
 
