@@ -15,7 +15,7 @@ class MyEvents extends React.Component {
       <View style={styles.container}>
         <Navbar/>
         <View style={styles.background}>
-          <MyEventBar title={'Ongoing'} aLink={Actions.myevents} bLink={Actions.myevents2}/>
+          <MyEventBar title={'Planned'} aLink={Actions.myevents} bLink={Actions.myevents2}/>
           <Calendar/>
           <View style={styles.masterBar}>
             <Text style={styles.masterBarText}>All Upcoming</Text>

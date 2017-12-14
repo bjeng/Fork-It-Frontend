@@ -82,7 +82,7 @@ var styles = StyleSheet.create({
     flex: 1,
     top: verticalScale(8),
     left: scale(8),
-    marginBottom: moderateScale(12),
+    marginBottom: moderateScale(20),
     marginTop: moderateScale(10),
     flexDirection: 'row',
     justifyContent: 'space-between',

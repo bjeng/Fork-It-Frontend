@@ -15,7 +15,7 @@ const StatusPage = ({}) => {
           <View style={styles.detailsContainer}>
             <View style={{flex: 2}}>
               <Text>U MY ENTOURAGE</Text>
-              <Text>Dinner at Mr. G's</Text>
+              <Text>Dinner at Mr. Gs</Text>
               <Text>Friday  at 8pm</Text>
             </View>
             <View style={{flex: 1}}>
