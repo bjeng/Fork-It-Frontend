@@ -14,7 +14,6 @@ class FriendItem extends Component{
 
 
     render(){
-      console.log('props is, ', this.props)
         return (
             <View style={styles.container} >
               <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

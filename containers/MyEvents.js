@@ -15,7 +15,7 @@ class MyEvents extends React.Component {
       <View style={styles.container}>
         <Navbar/>
         <View style={styles.background}>
-          <MyEventBar/>
+          <MyEventBar atext={"Ongoing"} btext={"Planned"}/>
           <Calendar/>
           <View style={styles.masterBar}>
             <Text style={styles.masterBarText}>All Upcoming</Text>
