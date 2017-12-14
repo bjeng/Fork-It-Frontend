@@ -10,24 +10,32 @@ export default class MyEventBar extends React.Component {
     this.state = {
       aCircle: true,
       bCircle: false,
-      barText: 'Ongoing'
+      barText: ''
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      barText: this.props.atext
+    })
   }
 
   aClick(){
     this.setState({
       aCircle: true,
       bCircle: false,
-      barText: 'Ongoing'
+      barText: this.props.atext
     })
+    this.props.alink()
   }
 
   bClick(){
     this.setState({
       aCircle: false,
       bCircle: true,
-      barText: 'Planned'
+      barText: this.props.btext
     })
+    this.props.blink()
   }
 
   render() {
