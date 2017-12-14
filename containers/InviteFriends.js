@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import FriendItem from '../components/FriendItem.js';
-// var AlphabetListView = require('react-native-alphabetlistview');
 
 class InviteFriends extends React.Component {
   constructor(props) {

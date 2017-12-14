@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import Expandable from '../components/Expandable.js';
+import MyEventBar from '../components/MyEventBar.js';
 
 const EventForm = ({}) => {
     return (
@@ -12,17 +13,18 @@ const EventForm = ({}) => {
         <Navbar/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          <View style={styles.headerContainer}>
+          {/* <View style={styles.headerContainer}>
             <TouchableOpacity style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>AAAAAAAAAAAAAA</Text></TouchableOpacity>
             <TouchableOpacity onPress={Actions.invitefriends} style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}><Text>BBBBBBBBBBBBBB</Text></TouchableOpacity>
-          </View>
+          </View> */}
+          <MyEventBar atext={"Facts"} btext={"Friends"} alink={() => Actions.eventform()} blink={() => Actions.invitefriends()}/>
           <View style={styles.optionsContainer}>
             <ScrollView>
-              <Expandable style={{flex: 1}}/>
-              <Expandable style={{flex: 1}}/>
-              <Expandable style={{flex: 1}}/>
-              <Expandable style={{flex: 1}}/>
-              <Expandable style={{flex: 1}}/>
+              <Expandable category={"Title"}/>
+              <Expandable category={"Date"}/>
+              <Expandable category={"Meal"}/>
+              <Expandable category={"Location"}/>
+              <Expandable category={"Cuisine"}/>
             </ScrollView>
           </View>
           <TouchableOpacity style={styles.nextContainer}>

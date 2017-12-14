@@ -19,7 +19,7 @@ class MyEvents extends React.Component {
         <Navbar/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          <MyEventBar/>
+          <MyEventBar atext={"Ongoing"} btext={"Planned"}/>
           <View style={styles.calendarContainer}>
             <CalendarStrip
               style={{height: 100, paddingTop: 20, paddingBottom: 10}}
