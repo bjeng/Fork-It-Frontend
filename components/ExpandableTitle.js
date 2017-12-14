@@ -45,6 +45,7 @@ class ExpandableTitle extends Component{
     }
 
     render(){
+      const textValidator = this.state.title.length > 1 && typeof(this.state.title) !== 'undefined'
       return (
           <Animated.View style={[styles.container, {height: this.state.animation}]} >
               <TouchableOpacity style={styles.titleContainer} onLayout={this._setMinHeight.bind(this)} onPress={this.toggle.bind(this)}>
@@ -60,7 +61,7 @@ class ExpandableTitle extends Component{
                     <Text style={styles.titleText}>Title</Text>
                   </View>
                   <View style={styles.button} underlayColor="#f1f1f1">
-                    {this.state.text.length > 1 ? <Image style={styles.checkImage} source={require('../assets/checkMGrey.png')} /> : null}
+                    {textValidator ? <Image style={styles.checkImage} source={require('../assets/checkMGrey.png')} /> : null}
                   </View>
               </TouchableOpacity>
 
