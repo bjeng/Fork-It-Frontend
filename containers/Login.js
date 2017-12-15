@@ -1,39 +1,204 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, TextInput, Alert, AsyncStorage } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { LinearGradient } from 'expo';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import { Font } from 'expo';
-import { addUserAll, login } from '../actions/UserActions.js';
+import axios from 'axios';
+import bcrypt from 'react-native-bcrypt';
+import PropTypes from 'prop-types';
 
-class Login extends React.Component {
+class Login extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+      email: '',
+      password: ''
+    };
+  }
+
+  async componentDidMount() {
+    let emailObj = await AsyncStorage.getItem('email');
+    let email = JSON.parse(emailObj);
+    var userObj = {};
+
+    if (email) {
+      if (email.type === 'regular') {
+        axios.get(`https://guarded-dawn-44803.herokuapp.com/db/search?password=$BIG_SHAQ103$&tableName=users&fields=token,email,firstname,lastname,friends,forks,wishlist,os&conditions=email='${email.email}'`)
+        .then(resp => {
+          if (bcrypt.compareSync(email.email, resp.data.result[0].token)) {
+
+            userObj = {firstname: resp.data.result[0].firstname, lastname: resp.data.result[0].lastname, email: resp.data.result[0].email, friends: resp.data.result[0].friends, forks: resp.data.result[0].forks, wishlist: resp.data.result[0].wishlist, os: resp.data.result[0].os};
+            this.props.userProfile(userObj);
+            // console.log(this.props.userInformation);
+
+            Actions.discover();
+          }
+        })
+        .catch(e => console.log(e))
+      }
+      if (email.type === 'facebook') {
+        axios.get(`https://guarded-dawn-44803.herokuapp.com/db/search?password=$BIG_SHAQ103$&tableName=users&fields=token,email,firstname,lastname,friends,forks,wishlist,os&conditions=email='${email.email}'`)
+        .then(resp => {
+          if (bcrypt.compareSync(email.email, resp.data.result[0].token)) {
+            userObj = {firstname: resp.data.result[0].firstname, lastname: resp.data.result[0].lastname, email: resp.data.result[0].email, friends: resp.data.result[0].friends, forks: resp.data.result[0].forks, wishlist: resp.data.result[0].wishlist, os: resp.data.result[0].os};
+            this.props.userProfile(userObj);
+            // console.log(this.props.userInformation);
+            Actions.discover();
+          }
+          // console.log(resp.data)
+        })
+        .catch(e => console.log(e))
+      }
+    }
+    // AsyncStorage.removeItem('email');
+  }
+
+  // See when the result.length is 0
+  login(ev) {
+    ev.preventDefault();
+
+    var userObj = {};
+
+    axios.get(`https://guarded-dawn-44803.herokuapp.com/db/search?password=$BIG_SHAQ103$&tableName=users&fields=email,password,firstname,lastname,friends,forks,wishlist,os&conditions=email='${this.state.email}'`)
+    .then(resp => {
+      if (resp.data.result.length > 0) {
+        if (bcrypt.compareSync(this.state.password, resp.data.result[0].password)) {
+          userObj = {firstname: resp.data.result[0].firstname, lastname: resp.data.result[0].lastname, email: resp.data.result[0].email, friends: resp.data.result[0].friends, forks: resp.data.result[0].forks, wishlist: resp.data.result[0].wishlist, os: resp.data.result[0].os};
+          // console.log('userObj', userObj);
+          this.props.userProfile(userObj);
+          console.log(this.props.userInformation);
+
+          var salt = bcrypt.genSaltSync(10);
+          var token = bcrypt.hashSync(this.state.email, salt);
+
+          axios({
+            method: 'POST',
+            url: 'https://guarded-dawn-44803.herokuapp.com/db/updaterows',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              password: '$BIG_SHAQ102$',
+              tableName: 'users',
+              set: `token='${token}'`,
+              conditions: `email='${this.state.email}'`
+            }
+          })
+          .then(response => {
+            if (response.data.success) {
+            AsyncStorage.setItem('email', JSON.stringify({
+              email: this.state.email,
+              type: 'regular'
+              }));
+            }
+          })
+          .catch(e => {
+            console.log('ERROR', e);
+          })
+          Actions.discover();
+        } else {
+          Alert.alert('Error', 'We don\'t recognize this combination! Please try again', {text: 'Ok'})
+        }
+      } else {
+        Alert.alert('Error', 'We don\'t recognize this combination! Please try again', {text: 'Ok'})
+      }
+    })
+    .catch(e => {
+      console.log('ERROR', e);
+    })
+  }
+
+  async facebookLogin() {
+    var userObj = {};
+    const {
+      type,
+      token,
+    } = await Expo.Facebook.logInWithReadPermissionsAsync('288424861584897', {
+      permissions: ['public_profile', 'email'],
+    });
+
+    if (type === 'success') {
+      const response = await fetch(
+        `https://graph.facebook.com/me?fields=email,last_name,first_name,picture,gender,locale,timezone,verified&access_token=${token}`
+      );
+      var userData = await response.json();
+      // console.log(userData.id);
+      // axios.get(`https://guarded-dawn-44803.herokuapp.com/db/search?password=$BIG_SHAQ103$&tableName=users&fields=id&conditions=id=${userData.id}`)
+      // .then((resp) => {
+        // console.log('Resp is ', resp.data);
+        // if (resp.data.result.length > 0) {
+        //   console.log('Found it!!!!!!!');
+        //   Actions.discover();
+        // } else {
+        //   axios({
+        //     method: 'POST',
+        //     url: 'https://guarded-dawn-44803.herokuapp.com/db/insertrows',
+        //     headers: {
+        //       'Content-Type': 'application/json'
+        //     },
+        //     data: {
+        //       password: '$BIG_SHAQ102$',
+        //       tableName: 'users',
+        //       params: `{"id":${userData.id}, "firstname": "${userData.first_name}", "lastname":"${userData.last_name}","email":"${userData.email}"}`
+        //     }
+        //   })
+        //   .then(response => {
+        //     console.log('Success')
+        //     Actions.discover();
+        //   })
+        // }
+      // })
+      // .catch(e => {
+      //   console.log('ERROR', e);
+      // })
+
+      // console.log(userData.id);
+      axios.get(`https://guarded-dawn-44803.herokuapp.com/db/search?password=$BIG_SHAQ103$&tableName=users&fields=email,password,firstname,lastname,friends,forks,wishlist,os&conditions=fb_id='${userData.id}'`)
+      .then(resp => {
+        if (resp.data.result.length > 0) {
+          AsyncStorage.setItem('email', JSON.stringify({
+            email: `fb${userData.email}`,
+            type: 'facebook'
+            }));
+          userObj = {firstname: resp.data.result[0].firstname, lastname: resp.data.result[0].lastname, email: resp.data.result[0].email, friends: resp.data.result[0].friends, forks: resp.data.result[0].forks, wishlist: resp.data.result[0].wishlist, os: resp.data.result[0].os};
+          this.props.userProfile(userObj);
+          console.log(this.props.userInformation);
+          Actions.discover();
+        } else {
+          var salt = bcrypt.genSaltSync(10);
+          var token = bcrypt.hashSync(`fb${userData.email}`, salt);
+
+          axios({
+            method: 'POST',
+            url: 'https://guarded-dawn-44803.herokuapp.com/db/insertrows',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            data: {
+              password: '$BIG_SHAQ102$',
+              tableName: 'users',
+              params: `{"fb_id":"${userData.id}", "firstname":"${userData.first_name}","lastname":"${userData.last_name}","email":"fb${userData.email}","password":"${userData.id}","token":"${token}"}`
+            }
+          })
+          .then(response => {
+            AsyncStorage.setItem('email', JSON.stringify({
+              email: `fb${userData.email}`,
+              type: 'facebook'
+              }));
+              userObj = {firstname: userData.first_name, lastname: userData.last_name, email: userData.email, friends: '', forks: '', wishlist: '', os: ''};
+              this.props.userProfile(userObj);
+              console.log(this.props.userInformation);
+            Actions.discover();
+          })
+        }
+      })
+      .catch(e => console.log(e))
     }
   }
 
-componentDidMount() {
-  console.log('mounted')
-}
-
-clickFacebook(firstName, lastName) {
-    this.props.addUser(firstName, lastName);
-    Actions.discover();
-}
-
-clickLogin(username, password) {
-  //axios request here
-  //if success then login
-  this.props.handleLogin(username, password);
-  Actions.discover();
-  //if fail then do something here
-}
-
-render() {
+  render() {
     return (
       <LinearGradient colors={['#303F4C', '#3B4955', '#AFAFAF']} style={styles.background} location={[0.3, 0.4, 1]}>
         <View style={styles.container}>
@@ -41,21 +206,21 @@ render() {
           <View style={styles.inputForm}>
             <View style={styles.input}>
               <Image style={styles.userIcon} source={require("../assets/username.png")}/>
-              <TextInput style={styles.inputText} placeholder={'Email'} value={this.state.username} onChangeText={(text) => this.setState({username: text})}/>
+              <TextInput style={styles.inputText} autoCapitalize={"none"} placeholder={'Email                                   '} onChangeText={(text) => this.setState({email: text})}/>
             </View>
             <View style={styles.input}>
               <Image style={styles.passIcon} source={require("../assets/password.png")}/>
-              <TextInput style={styles.inputText} placeholder={'Password'} value={this.state.password} onChangeText={(text) => this.setState({password: text})}/>
+              <TextInput style={styles.inputText} secureTextEntry={true} placeholder={'Password                                '} onChangeText={(text) => this.setState({password: text})}/>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={Actions.forgot}>
               <Text style={styles.forgetText}>Forget Your Password?</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonForm}>
-            <TouchableOpacity style={styles.loginButton} onPress={() => this.clickLogin(this.state.username, this.state.password)}>
+            <TouchableOpacity style={styles.loginButton} onPress={(ev) => {this.login(ev)}}>
               <Text style={styles.loginText}> SIGN IN </Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.fbButton} onPress={() => this.clickFacebook('Hassan', 'Saab')}>
+            <TouchableOpacity style={styles.fbButton} onPress={() => this.facebookLogin()}>
               <Image style={styles.fbIcon} source={require("../assets/fb.png")}/>
               <Text style={styles.fbText}> LOGIN WITH FACEBOOK </Text>
             </TouchableOpacity>
@@ -70,23 +235,20 @@ render() {
 }
 
 Login.propTypes = {
+  userProfile: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
+    // console.log(state);
     return {
-      user: state.user
+      userInformation: state.user
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    addUser: (firstName, lastName) => {
-      dispatch(addUserAll(firstName, lastName))
-    },
-    handleLogin: (username, password) => {
-      dispatch(login(username, password))
-    }
-  }
+      userProfile: (user) => dispatch({type: 'ADD_USER', info: user})
+    };
 };
 
 const styles = StyleSheet.create({

@@ -6,7 +6,68 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import Dash from 'react-native-dash';
 
-const Eats3 = ({}) => {
+class Eats3 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      secondsLeft: 1,
+      end: 0,
+      mins: 1/3.8,
+      interval: 0
+    }
+  }
+
+
+  handleShort(ev) {
+    ev.preventDefault();
+    this.props.setDistance(1500);
+    clearInterval(this.state.interval);
+    Actions.algo();
+  }
+
+  handleLong(ev) {
+    ev.preventDefault();
+    this.props.setDistance(5000);
+    clearInterval(this.state.interval);
+    Actions.algo();
+  }
+
+  handleGamble() {
+    let random = Math.random() * 2;
+    if (random >= 1) {
+      this.props.setDistance(5000);
+    } else {
+      this.props.setDistance(1500);
+    }
+    clearInterval(this.state.interval);
+    Actions.algo();
+  }
+
+  update() {
+    // YOUR CODE HERE
+    if(this.state.secondsLeft === 0) {
+      this.handleGamble()
+    }
+      this.setState({
+        secondsLeft: Math.floor((this.state.end - Date.now()) / 1000)
+      });
+  }
+
+  componentDidMount() {
+    this.setState({
+      end: new Date(Date.now() + this.state.mins * 60000)
+    });
+    this.interval = setInterval(this.update.bind(this), 100);
+    this.setState({
+      interval: this.interval
+    })
+  }
+
+ componentWillUnmount() {
+   clearInterval(this.update);
+ }
+
+  render() {
     return (
       <View style={styles.container}>
         <Navbar/>
@@ -15,13 +76,13 @@ const Eats3 = ({}) => {
           <View style={styles.topTile}>
             <View style={styles.rowSubContainer}>
               <Dash dashGap={0} dashColor={'white'} style={{width:scale(35), height:verticalScale(1), right:scale(5) }}/>
-              <Text style={styles.timer}> 00:10 </Text>
+              <Text style={styles.timer}> {this.state.secondsLeft} </Text>
               <Dash dashGap={0} dashColor={'white'} style={{width:scale(35), height:verticalScale(1), left:scale(5) }}/>
             </View>
             <Text style={styles.topText}>How far away you wanna go?</Text>
           </View>
           <View style={styles.colSubContainer}>
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity style={styles.option} onPress={(ev) => this.handleShort(ev)}>
               <Text style={styles.optionText}>Less than 1 mile</Text>
               <View style={styles.rowSubContainer}>
                 <Image style={styles.hiker} source={require("../assets/Hikerwhite.png")}/>
@@ -29,11 +90,11 @@ const Eats3 = ({}) => {
                 <Image style={styles.hiker} source={require("../assets/Hikerwhite.png")}/>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
+            <TouchableOpacity style={styles.option} onPress={(ev) => this.handleLong(ev)}>
               <Text style={styles.optionText}>1 to 3 miles</Text>
               <Image style={styles.car} source={require("../assets/carWhite.png")}/>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={Actions.algo}>
+            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={() => this.handleGamble()}>
               <Text style={styles.gambleText}> Take a Gamble </Text>
               <Image style={styles.dice} source={require("../assets/red-dice-512.png")}/>
             </TouchableOpacity>
@@ -41,6 +102,7 @@ const Eats3 = ({}) => {
         </View>
       </View>
     );
+  }
 }
 
 Eats3.propTypes = {
@@ -53,6 +115,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+      setDistance: (distance) => dispatch({type: "DISTANCE_TYPE", distance: distance})
     };
 };
 
