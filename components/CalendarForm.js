@@ -21,14 +21,14 @@ class CalendarForm extends Component{
       const minDate = stateLength === 0 ? 'none' : _.min(this.state.selected, (date) => {return date.timestamp})
       const selDuration = moment.duration(moment(selectedDate.timestamp) - moment(minDate.timestamp)).asDays()
 
-      if(selectedDate.timestamp > maxDate.timestamp && selDuration < 3){
+      if(selectedDate.timestamp > maxDate.timestamp && selDuration <= 3){
         const newSelection = this.state.selected.concat(selectedDate);
         this.setState({
           selected: newSelection
         })
       }
 
-      if(selectedDate.timestamp < maxDate.timestamp || selDuration >= 3 || maxDate === 'none'){
+      if(selectedDate.timestamp < maxDate.timestamp || selDuration > 3 || maxDate === 'none'){
         this.setState({
           selected: [selectedDate]
         })
