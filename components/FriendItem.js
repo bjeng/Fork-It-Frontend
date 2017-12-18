@@ -1,9 +1,9 @@
-import React,{Component} from 'react'
-import {StyleSheet,Text,View,Image,TouchableOpacity,TextInput} from 'react-native'; //Step 1
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
-import StarRating from 'react-native-star-rating';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 class FriendItem extends Component{
     constructor(props){
@@ -27,30 +27,28 @@ class FriendItem extends Component{
 
     selected() {
       return (
-        <TouchableOpacity onPress={() => this.uninvite()}>
-          <View style={styles.container} >
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-              <Image source={require('../assets/DesktopCopy2Black.png')} style={{height: 30, width: 30}}/>
-            </View>
-              <View style={{flex: 4, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>{this.props.title}</Text>
-              </View>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            </View>
+        <TouchableOpacity onPress={() => this.uninvite()} style={styles.container}>
+          <View style={styles.rowContainer}>
+            <Image source={require('../assets/fb.png')} style={styles.headshot}/>
+            <Text style={styles.name}>{this.props.title}</Text>
+          </View>
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <Image source={require('../assets/CubeLogoMGrey.png')} style={styles.cubeSelect}/>
           </View>
         </TouchableOpacity>
       )
     }
 
+
+
     unSelected() {
       return (
-        <TouchableOpacity onPress={() => this.invite()}>
-          <View style={styles.container} >
-            <View style={{flex: 4, justifyContent: 'center', alignItems: 'center'}}>
-              <Text>{this.props.title}</Text>
-            </View>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            </View>
+        <TouchableOpacity onPress={() => this.invite()} style={styles.container}>
+          <View style={styles.rowContainer}>
+            <Image source={require('../assets/fb.png')} style={styles.headshot}/>
+            <Text style={styles.name}>{this.props.title}</Text>
+          </View>
+          <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           </View>
         </TouchableOpacity>
       )
@@ -67,13 +65,36 @@ class FriendItem extends Component{
 
 export default FriendItem;
 
-var styles = StyleSheet.create({
+var styles = EStyleSheet.create({
   container: {
-    flex: 1,
+    height: verticalScale(50),
     backgroundColor: 'transparent',
     flexDirection: 'row',
-    borderColor: 'white',
+    borderColor: '#ACACAC',
     width: scale(375),
-    borderBottomWidth: scale(1),
+    borderBottomWidth: moderateScale(0.5),
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '75%',
+    marginLeft: scale(15)
+  },
+  name: {
+    color: '#646464',
+    fontFamily: 'Futura',
+    fontSize: moderateScale(18),
+    textAlign: 'left',
+    left: scale(30)
+  },
+  headshot: {
+    height: verticalScale(30),
+    width: scale(30),
+    overflow: 'visible'
+  },
+  cubeSelect: {
+    height: verticalScale(20),
+    width: scale(20),
+    overflow: 'visible'
   }
 });

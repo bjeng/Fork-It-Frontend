@@ -39,16 +39,14 @@ class InviteFriends extends React.Component {
   }
 
   search(searchVal){
-    let newlyDisplayed = allData.map((alpha) => {
-      let newList = alpha.data.filter((name) => name.includes(searchVal.toLowerCase()));
-      if(newList.length > 0) {
-        return Object.assign({}, {title: alpha.title, data: newList});
-      }
-    })
-    let finalDisplay = newlyDisplayed.filter(item => {return item !== undefined})
+    let finalDisplay = _.reduce(allData, (initial, obj) => {
+      let newList = obj.data.filter((item) => item.includes(searchVal.toLowerCase()));
+      if (newList.length > 0) initial.push(Object.assign({}, obj, {data: newList}));
+      return initial;
+    }, []);
     this.setState({
       data: finalDisplay
-    })
+    });
   }
 
   render() {
