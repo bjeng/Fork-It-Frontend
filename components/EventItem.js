@@ -16,39 +16,41 @@ class EventItem extends Component{
     render(){
         return (
             <View style={styles.container}>
-              <View style={styles.mealContainer}>
-                <Text style={styles.titleText}>Dinner at Mr. Gs</Text>
-                <View style={styles.rowContainer}>
-                  <View style={styles.colContainer}>
-                    <Text style={styles.detailText}>Dec 15 at 8pm</Text>
-                    <Text style={styles.detailText}>SAT</Text>
-                  </View>
-                  <View style={styles.rowPicContainer}>
-                    <View style={styles.hostContainer}>
-                      <Text style={styles.hostText}>H</Text>
-                      <View style={styles.circle}>
-                        <Image style={styles.headShot} source={this.props.host}/>
-                      </View>
+              <TouchableOpacity style={styles.background}>
+                <View style={styles.mealContainer}>
+                  <Text style={styles.titleText}>Dinner at Mr. Gs</Text>
+                  <View style={styles.rowContainer}>
+                    <View style={styles.colContainer}>
+                      <Text style={styles.detailText}>Dec 15 at 8pm</Text>
+                      <Text style={styles.detailText}>SAT</Text>
                     </View>
-                    <View style={styles.guestContainer}>
-                      <Text style={styles.guestText}>G</Text>
-                      <View style={styles.circle}>
-                        <Image style={styles.headShot} source={this.props.host}/>
+                    <View style={styles.rowPicContainer}>
+                      <View style={styles.hostContainer}>
+                        <Text style={styles.hostText}>H</Text>
+                        <View style={styles.circle}>
+                          <Image style={styles.headShot} source={this.props.host}/>
+                        </View>
                       </View>
-                      <View style={styles.circle}>
-                        <Image style={styles.headShot} source={this.props.host}/>
-                      </View>
-                      <View style={styles.circle}>
-                        <Image style={styles.headShot} source={this.props.host}/>
+                      <View style={styles.guestContainer}>
+                        <Text style={styles.guestText}>G</Text>
+                        <View style={styles.circle}>
+                          <Image style={styles.headShot} source={this.props.host}/>
+                        </View>
+                        <View style={styles.circle}>
+                          <Image style={styles.headShot} source={this.props.host}/>
+                        </View>
+                        <View style={styles.circle}>
+                          <Image style={styles.headShot} source={this.props.host}/>
+                        </View>
                       </View>
                     </View>
                   </View>
                 </View>
-              </View>
-              <View style={styles.titleContainer}>
-                <Text style={styles.titleText}>Let's Turn Up Peeps</Text>
-                <Image style={styles.rightButton} source={RightButton} />
-              </View>
+                <View style={styles.titleContainer}>
+                  <Text style={styles.titleText}>Let's Turn Up Peeps</Text>
+                  <Image style={styles.rightButton} source={RightButton}/>
+                </View>
+              </TouchableOpacity>
             </View>
         );
     }
@@ -59,9 +61,19 @@ var styles = StyleSheet.create({
   container: {
     flex: 4,
     backgroundColor: 'transparent',
-    borderColor: '#AFAFAF',
     width: scale(375),
-    borderBottomWidth: scale(1),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: verticalScale(4),
+    marginBottom: verticalScale(4)
+  },
+  background: {
+    backgroundColor: 'rgba(255,255,255,.31)',
+    width: scale(358),
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    shadowColor: 'grey',
+    shadowOffset: { height: verticalScale(4), width: 0 },
   },
   mealContainer: {
     flex: 1,
@@ -138,6 +150,6 @@ var styles = StyleSheet.create({
   rightButton: {
     width: scale(13),
     height: verticalScale(13),
-    right: scale(10)
+    right: scale(18)
   }
 });
