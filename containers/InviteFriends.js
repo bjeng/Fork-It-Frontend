@@ -7,22 +7,26 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import Navbar from '../components/Navbar.js';
 import FriendItem from '../components/FriendItem.js';
 import FormBar from '../components/FormBar.js';
+import _ from 'underscore';
+
+const allData = [
+  {title: "A", data: ["apple", "artichoke"]},
+  {title: "B", data: ["banana", "bacon"]},
+  {title: "C", data: ["cookie", "cheese", "chocolate", "curry", "cake"]},
+  {title: "D", data: ["doritos"]},
+  {title: "E", data: ["eggs"]},
+  {title: "F", data: ["falafel", "fudge"]},
+  {title: "G", data: ["gouda", "gyro"]},
+  {title: "H", data: ["hot dog", "hero"]},
+  {title: "I", data: ["ice cream"]},
+]
 
 class InviteFriends extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        {title: "A", data: ["apple", "artichoke"]},
-        {title: "B", data: ["banana", "bacon"]},
-        {title: "C", data: ["cookie", "cheese", "chocolate", "curry", "cake"]},
-        {title: "D", data: ["doritos"]},
-        {title: "E", data: ["eggs"]},
-        {title: "F", data: ["falafel", "fudge"]},
-        {title: "G", data: ["gouda", "gyro"]},
-        {title: "H", data: ["hot dog", "hero"]},
-        {title: "I", data: ["ice cream"]},
-      ],
+      searchVal: '',
+      data: allData,
       FoF: true
     }
   }
@@ -31,6 +35,19 @@ class InviteFriends extends React.Component {
     const opposite = !this.state.FoF;
     this.setState({
       FoF: opposite
+    })
+  }
+
+  search(searchVal){
+    let newlyDisplayed = allData.map((alpha) => {
+      let newList = alpha.data.filter((name) => name.includes(searchVal.toLowerCase()));
+      if(newList.length > 0) {
+        return Object.assign({}, {title: alpha.title, data: newList});
+      }
+    })
+    let finalDisplay = newlyDisplayed.filter(item => {return item !== undefined})
+    this.setState({
+      data: finalDisplay
     })
   }
 
@@ -43,31 +60,26 @@ class InviteFriends extends React.Component {
           <View style={styles.createContainer}>
             <TouchableOpacity style={styles.optionContainer} onPress={() => {this.fofToggle()}}>
               <Image style={styles.group} source={require("../assets/groupMGrey.png")}/>
-              {this.state.FoF ? <Text>+1s ON </Text> : <Text>+1s OFF </Text>}
+              {this.state.FoF ? <Text style={styles.optionText}>+1s ON </Text> : <Text style={styles.optionText}>+1s OFF </Text>}
             </TouchableOpacity>
             <TouchableOpacity style={styles.optionContainer}>
-              <Text>Friends O Friends</Text>
+              <Image style={styles.group} source={require("../assets/plusMGrey.png")}/>
+              <Text style={styles.optionText}>Contacts</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={Actions.statuspage} style={styles.optionContainer}>
-              <Text>Create Button</Text>
+              <Image style={styles.group} source={require("../assets/CubeLogoMGrey.png")}/>
+              <Text style={styles.optionText}>Create</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.searchContainer}>
-            <TextInput style={styles.search} placeholder={'Search'}/>
+            <Image style={styles.logoSearch} source={require("../assets/search.png")}/>
+            <TextInput style={styles.search} placeholder={'Search'} onChangeText={(searchVal) => {this.search(searchVal)}}/>
           </View>
           <View style={styles.listContainer}>
-            {/* <AlphabetListView
-              data={this.state.data}
-              cell={FriendItem}
-              cellHeight={100}
-              sectionHeaderHeight={22.5}
-            /> */}
-            {/* <FriendItem/>
-            <FriendItem/>
-            <FriendItem/> */}
             <SectionList
-              renderItem={({item}) => <FriendItem title={item}/>}
-              renderSectionHeader={({section}) => <Text>{section.title}</Text>}
+              renderItem={({item, index}) => <FriendItem key={index} title={item}/>}
+              renderSectionHeader={({section}) =>
+                <View style={styles.sectionHeader}><Text style={styles.sectionText}>{section.title}</Text></View>}
               sections={this.state.data}
             />
           </View>
@@ -76,9 +88,6 @@ class InviteFriends extends React.Component {
     );
   }
 }
-
-InviteFriends.propTypes = {
-};
 
 const mapStateToProps = (state) => {
     return {
@@ -116,35 +125,67 @@ const styles = EStyleSheet.create({
     flexDirection: 'row'
   },
   createContainer: {
-    flex: 1,
-    flexDirection: 'row'
+    flex: 1.1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: '#F0F0F0',
+    borderBottomWidth: 1,
+    borderBottomColor: '#95989A'
   },
   searchContainer: {
-    flex: 1,
-    width: scale(375),
-    marginTop: 20,
-    marginBottom: 20,
+    flex: 0.5,
+    width: '90%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    borderRadius: moderateScale(40),
+    margin: moderateScale(10)
   },
   listContainer: {
     flex: 5
   },
   search: {
-    backgroundColor: 'white',
-    borderRadius: 40,
-    padding: 20,
-    width: scale(250)
+    width: '90%',
+    left: scale(15),
+    fontSize: moderateScale(15),
+    color: '#646464'
   },
   optionContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     width: '33%'
   },
+  optionText: {
+    fontFamily: 'Futura',
+    color: '#646464',
+    fontSize: moderateScale(15),
+    marginTop: verticalScale(5),
+    fontWeight: 'bold',
+  },
   group: {
-    height: verticalScale(45),
-    width: scale(45),
+    height: verticalScale(30),
+    width: scale(30),
     overflow: 'visible'
+  },
+  logoSearch: {
+    height: verticalScale(20),
+    width: scale(20),
+    left: scale(3),
+    opacity: 0.52,
+    overflow: 'visible'
+  },
+  sectionHeader: {
+    width: '100%',
+    height: verticalScale(15),
+    justifyContent: 'space-around',
+    backgroundColor: 'silver',
+  },
+  sectionText: {
+    fontFamily: 'Futura',
+    fontSize: moderateScale(10),
+    marginLeft: scale(10)
   }
 });
 

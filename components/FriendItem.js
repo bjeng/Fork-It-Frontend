@@ -9,33 +9,62 @@ class FriendItem extends Component{
     constructor(props){
         super(props);
         this.state = {
+          showSelected: false
         };
     }
 
+    invite() {
+      this.setState({
+        selected: true
+      })
+    }
 
-    render(){
-        return (
-            <View style={styles.container} >
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Image source={require('../assets/DesktopCopy2Black.png')} style={{height: 30, width: 30}}/>
-              </View>
+    uninvite() {
+      this.setState({
+        selected: false
+      })
+    }
+
+    selected() {
+      return (
+        <TouchableOpacity onPress={() => this.uninvite()}>
+          <View style={styles.container} >
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+              <Image source={require('../assets/DesktopCopy2Black.png')} style={{height: 30, width: 30}}/>
+            </View>
               <View style={{flex: 4, justifyContent: 'center', alignItems: 'center'}}>
                 <Text>{this.props.title}</Text>
               </View>
-              <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <StarRating
-                  disabled={false}
-                  maxStars={1}
-                  rating={0}
-                  starSize={40}
-                  starColor={'#ddd3dc'}
-                  emptyStarColor={'#ddd3dc'}
-                />
-              </View>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             </View>
+          </View>
+        </TouchableOpacity>
+      )
+    }
+
+    unSelected() {
+      return (
+        <TouchableOpacity onPress={() => this.invite()}>
+          <View style={styles.container} >
+            <View style={{flex: 4, justifyContent: 'center', alignItems: 'center'}}>
+              <Text>{this.props.title}</Text>
+            </View>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            </View>
+          </View>
+        </TouchableOpacity>
+      )
+    }
+
+    render(){
+        return (
+          <View>
+            {this.state.selected ? this.selected() : this.unSelected()}
+        </View>
         );
     }
 }
+
 export default FriendItem;
 
 var styles = StyleSheet.create({
@@ -46,6 +75,5 @@ var styles = StyleSheet.create({
     borderColor: 'white',
     width: scale(375),
     borderBottomWidth: scale(1),
-
   }
 });

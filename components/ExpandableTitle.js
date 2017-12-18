@@ -18,8 +18,8 @@ class ExpandableTitle extends Component{
     }
 
     toggle(){
-      let initialValue = this.state.expanded? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
-      finalValue = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
+      let initialValue = this.state.expanded ? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
+      finalValue = this.state.expanded ? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
 
       this.setState({
           expanded : !this.state.expanded
@@ -84,6 +84,7 @@ var styles = StyleSheet.create({
     container: {
       overflow:'hidden',
       width: scale(358),
+      height: verticalScale(96.5),
     },
     titleContainer: {
       flexDirection: 'row',
