@@ -62,7 +62,6 @@ export default class Tabbar extends React.Component {
           width: scale(375/4),
           backgroundColor: this.state.newsfeedColor,
           borderColor: '#95989A',
-          borderTopWidth: 0.5,
           alignItems: 'center',
           justifyContent: 'center'
           }}
@@ -74,7 +73,6 @@ export default class Tabbar extends React.Component {
           width: scale(375/4),
           backgroundColor: this.state.discoverColor,
           borderColor: '#95989A',
-          borderTopWidth: 0.5,
           alignItems: 'center',
           justifyContent: 'center'
           }}
@@ -86,7 +84,6 @@ export default class Tabbar extends React.Component {
           width: scale(375/4),
           backgroundColor: this.state.profileColor,
           borderColor: '#95989A',
-          borderTopWidth: 0.5,
           alignItems: 'center',
           justifyContent: 'center'
           }}
@@ -98,7 +95,6 @@ export default class Tabbar extends React.Component {
           width: scale(375/4),
           backgroundColor: this.state.searchColor,
           borderColor: '#95989A',
-          borderTopWidth: 0.5,
           alignItems: 'center',
           justifyContent: 'center'
           }}
@@ -119,23 +115,27 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   logoNewsfeed: {
-    height: verticalScale(23),
-    width: scale(23),
-    opacity: 0.52
+    height: verticalScale(25),
+    width: scale(25),
+    opacity: 0.52,
+    overflow: 'visible'
   },
   logoDiscover: {
     height: verticalScale(27),
-    width: scale(27),
-    opacity: 0.52
+    width: scale(30),
+    opacity: 0.52,
+    overflow: 'visible'
   },
   logoProfile: {
     height: verticalScale(25),
     width: scale(25),
-    opacity: 0.52
+    opacity: 0.52,
+    overflow: 'visible'
   },
   logoSearch: {
     height: verticalScale(25),
     width: scale(25),
-    opacity: 0.52
+    opacity: 0.52,
+    overflow: 'visible'
   }
 });

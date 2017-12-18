@@ -4,24 +4,24 @@ import { Actions } from 'react-native-router-flux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Dash from 'react-native-dash';
 
-export default class MyEventBar extends React.Component {
+export default class FormBar extends React.Component {
   constructor() {
     super()
   }
 
   render() {
-    const aTextOn = this.props.title === "Ongoing" ? styles.selectedText : styles.unselectedText;
-    const bTextOn = this.props.title === "Planned" ? styles.selectedText : styles.unselectedText;
-    const aContOn = this.props.title === "Ongoing" ? styles.subContainerSelected : styles.subContainer;
-    const bContOn = this.props.title === "Planned" ? styles.subContainerSelected : styles.subContainer;
+    const aTextOn = this.props.title === "Facts" ? styles.selectedText : styles.unselectedText;
+    const bTextOn = this.props.title === "Friends" ? styles.selectedText : styles.unselectedText;
+    const aContOn = this.props.title === "Facts" ? styles.subContainerSelected : styles.subContainer;
+    const bContOn = this.props.title === "Friends" ? styles.subContainerSelected : styles.subContainer;
 
     return (
       <View style={styles.container}>
         <TouchableOpacity style={aContOn} onPress={() => this.props.aLink()}>
-          <View><Text style={aTextOn}>Ongoing</Text></View>
+          <View><Text style={aTextOn}>Facts</Text></View>
         </TouchableOpacity>
         <TouchableOpacity style={bContOn} onPress={() => this.props.bLink()}>
-            <View><Text style={bTextOn}>Planned</Text></View>
+            <View><Text style={bTextOn}>Friends</Text></View>
         </TouchableOpacity>
       </View>
     );
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     height: verticalScale(75),
     width: scale(375),
     backgroundColor: "#EBEBEB",
-    alignItems: 'center',
+    alignItems: 'flex-end',
     flexDirection: 'row',
     justifyContent: 'center',
   },

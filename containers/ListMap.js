@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import MinibarMap from '../components/MinibarMap.js';
-import {MapView} from 'expo';
+import { MapView } from 'expo';
 
 const ListMap = ({}) => {
     return (
