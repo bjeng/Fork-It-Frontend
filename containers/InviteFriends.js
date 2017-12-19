@@ -7,7 +7,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import Navbar from '../components/Navbar.js';
 import FriendItem from '../components/FriendItem.js';
 import FormBar from '../components/FormBar.js';
-import _ from 'underscore';
 
 const allData = [
   {title: "A", data: ["apple", "artichoke"]},
@@ -64,14 +63,19 @@ class InviteFriends extends React.Component {
               <Image style={styles.group} source={require("../assets/plusMGrey.png")}/>
               <Text style={styles.optionText}>Contacts</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={Actions.statuspage} style={styles.optionContainer}>
+            <TouchableOpacity onPress={Actions.eats4} style={styles.optionContainer}>
               <Image style={styles.group} source={require("../assets/CubeLogoMGrey.png")}/>
               <Text style={styles.optionText}>Create</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.searchContainer}>
-            <Image style={styles.logoSearch} source={require("../assets/search.png")}/>
-            <TextInput style={styles.search} placeholder={'Search'} onChangeText={(searchVal) => {this.search(searchVal)}}/>
+          <View style={styles.rowContainer}>
+            <View style={styles.searchContainer}>
+              <Image style={styles.logoSearch} source={require("../assets/search.png")}/>
+              <TextInput style={styles.search} placeholder={'Search'} onChangeText={(searchVal) => {this.search(searchVal)}}/>
+            </View>
+            <View style={styles.textContainer}>
+              <Text style={styles.counterText}>10</Text>
+            </View>
           </View>
           <View style={styles.listContainer}>
             <SectionList
@@ -103,8 +107,7 @@ const styles = EStyleSheet.create({
     backgroundColor: 'transparent',
   },
   background: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: 'transparent',
     height: verticalScale(667-70-50),
     width: '100%',
@@ -131,9 +134,13 @@ const styles = EStyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#95989A'
   },
+  rowContainer: {
+    flex: 0.8,
+    flexDirection: 'row',
+    width: '100%',
+  },
   searchContainer: {
-    flex: 0.5,
-    width: '90%',
+    width: '80%',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -141,11 +148,22 @@ const styles = EStyleSheet.create({
     borderRadius: moderateScale(40),
     margin: moderateScale(10)
   },
+  textContainer: {
+    width: '10%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  counterText: {
+    fontFamily: 'Futura',
+    fontWeight: 'bold',
+    fontSize: moderateScale(25),
+    color: '#646464',
+  },
   listContainer: {
     flex: 5
   },
   search: {
-    width: '90%',
+    width: '85%',
     left: scale(15),
     fontSize: moderateScale(15),
     color: '#646464'

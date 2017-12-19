@@ -23,7 +23,7 @@ class ExpandableDate extends Component{
       finalValue = this.state.expanded? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
 
       this.setState({
-          expanded : !this.state.expanded
+          expanded: !this.state.expanded
       });
 
       this.state.animation.setValue(initialValue);

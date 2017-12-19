@@ -12,6 +12,7 @@ import DiscoverHome from './containers/DiscoverHome.js';
 import Eats1 from './containers/Eats1.js';
 import Eats2 from './containers/Eats2.js';
 import Eats3 from './containers/Eats3.js';
+import Eats4 from './containers/Eats4.js';
 import Algo from './containers/Algo.js';
 import ListResults from './containers/ListResults.js';
 import ListMap from './containers/ListMap.js';
@@ -32,6 +33,7 @@ import MultiResult from './containers/MultiResult.js';
 import InviteFriends from './containers/InviteFriends.js';
 import MyEvents from './containers/MyEvents.js';
 import MyEvents2 from './containers/MyEvents2.js';
+import MyEvents3 from './containers/MyEvents3.js';
 
 EStyleSheet.build();
 
@@ -48,6 +50,7 @@ const Scenes = Actions.create(
         <Scene key="eats1" component={Eats1} hideNavBar={true} hideTabBar={true}/>
         <Scene key="eats2" component={Eats2} hideNavBar={true} hideTabBar={true}/>
         <Scene key="eats3" component={Eats3} hideNavBar={true} hideTabBar={true}/>
+        <Scene key="eats4" component={Eats4} hideNavBar={true} hideTabBar={true}/>
         <Scene key="algo" component={Algo} hideNavBar={true} hideTabBar={true}/>
         <Scene key="testquestion" component={TestQuestion} hideNavBar={true} hideTabBar={true}/>
         <Scene key="listresults" component={ListResults} hideNavBar={true} lazy={true}/>
@@ -66,6 +69,7 @@ const Scenes = Actions.create(
         <Scene key="multiresult" component={MultiResult} hideNavBar={true}/>
         <Scene key="myevents" component={MyEvents} hideNavBar={true}/>
         <Scene key="myevents2" component={MyEvents2} hideNavBar={true}/>
+        <Scene key="myevents3" component={MyEvents3} hideNavBar={true}/>
       </Scene>
     </Scene>
     <Scene key="resultlightbox" component={ResultLightbox} hideNavBar={true}/>

@@ -9,7 +9,6 @@ import Dash from 'react-native-dash';
 const Eats1 = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/DiscoverEat-1.png")}/>
           <View style={styles.topTile}>
