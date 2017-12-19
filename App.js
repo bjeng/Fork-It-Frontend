@@ -65,20 +65,20 @@ const Scenes = Actions.create(
         <Scene key="discover" component={DiscoverHome} hideNavBar={true}/>
         <Scene key="profile" component={Profile} hideNavBar={true}/>
         <Scene key="search" component={Search} hideNavBar={true}/>
+        {/* <Scene tabs={true} tabBarComponent={MinibarResults} tabBarPosition='top'> */}
+        <Scene key="listresults" component={ListResults} hideNavBar={true} lazy={true}/>
+        <Scene key="listmap" component={ListMap} hideNavBar={true}/>
         <Scene key="singleresult" component={SingleResult} hideNavBar={true}/>
-        <Scene key="root3" tabs={true} tabBarComponent={MinibarResults} tabBarPosition='top'>
-          <Scene key="listresults" component={ListResults} hideNavBar={true} lazy={true}/>
-          <Scene key="listmap" component={ListMap} hideNavBar={true}/>
-        </Scene>
-        <Scene key="root4" tabs={true} tabBarComponent={FormBar} tabBarPosition='top'>
-          <Scene key="eventform" component={EventForm} hideNavBar={true} lazy={true}/>
-          <Scene key="invitefriends" component={InviteFriends} hideNavBar={true} lazy={true}/>
-        </Scene>
-        <Scene key="root5" tabs={true} tabBarComponent={MyEventBar} tabBarPosition='top'>
-          <Scene key="myevents" component={MyEvents} hideNavBar={true} lazy={true}/>
-          <Scene key="myevents2" component={MyEvents2} hideNavBar={true} lazy={true}/>
-          <Scene key="myevents3" component={MyEvents3} hideNavBar={true} lazy={true}/>
-        </Scene>
+        {/* </Scene> */}
+        {/* <Scene tabs={true} tabBarComponent={FormBar} tabBarPosition='top'> */}
+        <Scene key="eventform" component={EventForm} hideNavBar={true}/>
+        <Scene key="invitefriends" component={InviteFriends} hideNavBar={true}/>
+        {/* </Scene> */}
+        {/* <Scene tabs={true} tabBarComponent={MyEventBar} tabBarPosition='top'> */}
+        <Scene key="myevents" component={MyEvents} hideNavBar={true}/>
+        <Scene key="myevents2" component={MyEvents2} hideNavBar={true}/>
+        <Scene key="myevents3" component={MyEvents3} hideNavBar={true}/>
+        {/* </Scene> */}
       </Scene>
     </Scene>
     <Scene key="resultlightbox" component={ResultLightbox} hideNavBar={true}/>

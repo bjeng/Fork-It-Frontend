@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
+import Tabbar from '../components/Tabbar.js';
 
 const FriendList = ({}) => {
     return (

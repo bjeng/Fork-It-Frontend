@@ -8,30 +8,34 @@ import EventNotification from '../components/EventNotification.js';
 import MyEventBar from '../components/MyEventBar.js';
 import Calendar from '../components/Calendar.js';
 import ProfPic from '../assets/profile.png';
+import Tabbar from '../components/Tabbar.js';
 
 class MyEvents3 extends React.Component {
   render() {
     return (
-      <View style={styles.background}>
-        <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
-        <ScrollView style={{top: verticalScale(20)}}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>New Events</Text>
-          </View>
-          <View style={styles.listContainer}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionText}>This Week</Text>
+      <View>
+        <MyEventBar title={"Notif"} aLink={() => Actions.myevents()} bLink={() => Actions.myevents2()} cLink={() => Actions.myevents3()}/>
+        <View style={styles.background}>
+          <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
+          <ScrollView style={{top: verticalScale(20)}}>
+            <View style={styles.titleContainer}>
+              <Text style={styles.titleText}>New Events</Text>
             </View>
-            <EventNotification host={ProfPic}/>
-            <EventNotification />
-            <EventNotification />
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionText}>Next Week</Text>
+            <View style={styles.listContainer}>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionText}>This Week</Text>
+              </View>
+              <EventNotification host={ProfPic}/>
+              <EventNotification />
+              <EventNotification />
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionText}>Next Week</Text>
+              </View>
+              <EventNotification />
+              <EventNotification />
             </View>
-            <EventNotification />
-            <EventNotification />
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
       </View>
     );
   }

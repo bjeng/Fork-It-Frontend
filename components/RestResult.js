@@ -22,59 +22,73 @@ export default class RestResult extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity style={this.props.border ? styles.listItem : styles.listItemNoBorder}
-        onPress={Actions.singleresult}>
-        <View style={styles.restaurantPic} >
-          <Image style={styles.restaurantIcon} source={this.props.img}/>
-        </View>
-        <View style={styles.restaurantInfo}>
-          <View style={styles.restaurantNameContainer}>
-            <View style={styles.restaurantName}>
-              <Text style={styles.nameText}>{this.nameCheck(this.props.name)}</Text>
-            </View>
-            <View style={styles.star}>
-              <View>
-                <StarRating
-                  disabled={false}
-                  maxStars={1}
-                  rating={0}
-                  starSize={40}
-                  starColor={'#ddd3dc'}
-                  emptyStarColor={'#ddd3dc'}
-                />
+      <View style={styles.container}>
+        <TouchableOpacity style={this.props.border ? styles.listItem : styles.listItemNoBorder}
+          onPress={Actions.singleresult}>
+          <View style={styles.restaurantPic} >
+            <Image style={styles.restaurantIcon} source={this.props.img}/>
+          </View>
+          <View style={styles.restaurantInfo}>
+            <View style={styles.restaurantNameContainer}>
+              <View style={styles.restaurantName}>
+                <Text style={styles.nameText}>{this.nameCheck(this.props.name)}</Text>
+              </View>
+              <View style={styles.star}>
+                <View>
+                  <StarRating
+                    disabled={false}
+                    maxStars={1}
+                    rating={0}
+                    starSize={40}
+                    starColor={'#8D8D8D'}
+                    emptyStarColor={'#8D8D8D'}
+                  />
+                </View>
               </View>
             </View>
-          </View>
-          <View style={styles.restaurantDetails}>
-            <View style={styles.restaurantStats}>
-              <View style={styles.starRating}>
-                <StarRating
-                  disabled={true}
-                  maxStars={5}
-                  rating={this.props.rating}
-                  starSize={25}
-                  starColor={'#ecf000'}
-                  emptyStarColor={'#ecf000'}
-                />
+            <View style={styles.restaurantDetails}>
+              <View style={styles.restaurantStats}>
+                <View style={styles.starRating}>
+                  <StarRating
+                    disabled={true}
+                    maxStars={5}
+                    rating={this.props.rating}
+                    starSize={25}
+                    starColor={'#ecf000'}
+                    emptyStarColor={'#ecf000'}
+                  />
+                </View>
+                <Text style={styles.textDetails}>{this.props.reviews}</Text>
+                <Text style={styles.textDetails}>{this.props.distance}</Text>
               </View>
-              <Text style={styles.textDetails}>{this.props.reviews}</Text>
-              <Text style={styles.textDetails}>{this.props.distance}</Text>
+              <TouchableOpacity style={styles.eatIcon}>
+                <Image style={styles.menuIcon} source={require("../assets/ForkandKnifeTransparentGrey.png")}/>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.eatIcon}>
-              <Image style={styles.menuIcon} source={require("../assets/ForkandKnifeTransparentGrey.png")}/>
-            </TouchableOpacity>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  listItem: {
-    borderBottomColor: "#ddd3dc",
-    borderBottomWidth: scale(0.5),
+  container: {
+    height: verticalScale(145),
+    backgroundColor: 'transparent',
     width: scale(375),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: verticalScale(4),
+    marginBottom: verticalScale(4),
+  },
+  listItem: {
+    backgroundColor: 'rgba(255,255,255,.31)',
+    width: scale(358),
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    shadowColor: 'grey',
+    shadowOffset: { height: verticalScale(4), width: 0 },
     flex: 1,
     flexDirection: 'row'
   },
@@ -87,7 +101,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: scale(10),
+    paddingLeft: scale(15),
     opacity: 0.7,
   },
   restaurantIcon: {
@@ -111,7 +125,7 @@ const styles = StyleSheet.create({
   },
   nameText: {
     fontFamily: 'Futura',
-    color: 'white',
+    color: '#646464',
     fontSize: moderateScale(20)
   },
   star: {
@@ -134,7 +148,7 @@ const styles = StyleSheet.create({
   },
   textDetails: {
     fontFamily: 'Futura',
-    color: 'white',
+    color: '#8D8D8D',
     fontSize: moderateScale(16)
   },
   eatIcon: {
