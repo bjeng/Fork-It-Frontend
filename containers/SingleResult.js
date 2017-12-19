@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar.js';
 import {MapView} from 'expo';
 import StarRating from 'react-native-star-rating';
 
-
 const SingleResult = ({}) => {
     return (
       <View style={styles.container}>

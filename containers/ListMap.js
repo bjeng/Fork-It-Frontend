@@ -10,8 +10,6 @@ import { MapView } from 'expo';
 const ListMap = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
-        <MinibarMap/>
         <View style={styles.background}>
           <View>
             <MapView
@@ -79,13 +77,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'transparent',
-    height: verticalScale(667-70-50-50),
+    height: verticalScale(667-70-50),
     width: scale(375)
   },
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
-    height: verticalScale(667-70-50-50),
+    height: verticalScale(667-70-50),
     width: scale(375)
   },
 });

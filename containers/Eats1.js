@@ -9,7 +9,6 @@ import Dash from 'react-native-dash';
 const Eats1 = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/DiscoverEat-1.png")}/>
           <View style={styles.topTile}>
@@ -79,16 +78,16 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   background: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'transparent',
-    height: verticalScale(667-70),
+    height: verticalScale(667),
     width: scale(375),
   },
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
-    height: verticalScale(667-70),
+    height: verticalScale(667),
     width: scale(375)
   },
   topTile: {
