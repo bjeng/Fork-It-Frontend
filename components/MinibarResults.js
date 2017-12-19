@@ -5,15 +5,40 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Dash from 'react-native-dash';
 
 export default class MinibarResults extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      leftDash: '#F63535',
+      rightDash: '#00042E'
+    }
+  }
+
+  selectResults(fn) {
+    this.setState({
+      leftDash: '#F63535',
+      rightDash: "#00042E",
+    })
+    fn()
+  }
+
+  selectMap(fn) {
+    this.setState({
+      leftDash: '#00042E',
+      rightDash: "#F63535",
+    })
+    fn()
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.subContainer}>
+        <TouchableOpacity style={styles.subContainer} onPress={() => this.selectResults(Actions.listresults)}>
           <Text style={styles.minibarText}>Results</Text>
-          <Dash dashGap={0} dashColor={'#F63535'} style={{width:scale(55), height:verticalScale(1), top: verticalScale(2)}}/>
+          <Dash dashGap={0} dashColor={this.state.leftDash} style={{width:scale(55), height:verticalScale(1), top: verticalScale(2)}}/>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.subContainer} onPress={Actions.listmap}>
+        <TouchableOpacity style={styles.subContainer} onPress={() => this.selectMap(Actions.listmap)}>
           <Text style={styles.minibarText}>Map It</Text>
+          <Dash dashGap={0} dashColor={this.state.rightDash} style={{width:scale(55), height:verticalScale(1), top: verticalScale(2)}}/>
         </TouchableOpacity>
       </View>
     );
@@ -22,7 +47,7 @@ export default class MinibarResults extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: verticalScale(50),
+    height: verticalScale(70),
     width: scale(375),
     backgroundColor: "#00042E",
     alignItems: 'center',

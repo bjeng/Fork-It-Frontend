@@ -8,12 +8,13 @@ import EventItem from '../components/EventItem';
 import MyEventBar from '../components/MyEventBar.js';
 import Calendar from '../components/Calendar.js';
 import ProfPic from '../assets/profile.png';
+import Tabbar from '../components/Tabbar.js';
 
 class MyEvents extends React.Component {
   render() {
     return (
       <View style={styles.background}>
-        <MyEventBar title={'Ongoing'} aLink={Actions.myevents} bLink={Actions.myevents2}/>
+        {/* <MyEventBar title={'Ongoing'} aLink={Actions.myevents} bLink={Actions.myevents2}/> */}
         <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
         <Calendar/>
         <ScrollView>
@@ -34,6 +35,7 @@ class MyEvents extends React.Component {
             <EventItem />
           </View>
         </ScrollView>
+        <Tabbar/>
       </View>
     );
   }

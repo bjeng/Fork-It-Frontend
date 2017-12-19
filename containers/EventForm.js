@@ -14,10 +14,10 @@ import ExpandableCuisine from '../components/ExpandableCuisine.js';
 
 const EventForm = ({}) => {
     return (
-      // <View style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
-          <FormBar title={"Facts"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/>
+          {/* <FormBar title={"Facts"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/> */}
           <View style={styles.scroll}>
             <ScrollView>
               <ExpandableTitle/>
@@ -28,7 +28,7 @@ const EventForm = ({}) => {
             </ScrollView>
           </View>
         </View>
-      // </View>
+      </View>
     );
 }
 

@@ -7,21 +7,47 @@ import Dash from 'react-native-dash';
 export default class MyEventBar extends React.Component {
   constructor() {
     super()
+    this.state = {
+      ongoing: styles.selectedText,
+      ongoingCont: styles.subContainerSelected,
+      planned: styles.unselectedText,
+      plannedCont: styles.subContainer
+    }
+  }
+
+  selectOngoing(fn) {
+    this.setState({
+      ongoing: styles.selectedText,
+      ongoingCont: styles.subContainerSelected,
+      planned: styles.unselectedText,
+      plannedCont: styles.subContainer
+    })
+    fn()
+  }
+
+  selectPlanned(fn) {
+    this.setState({
+      ongoing: styles.unselectedText,
+      ongoingCont: styles.subContainer,
+      planned: styles.selectedText,
+      plannedCont: styles.subContainerSelected
+    })
+    fn()
   }
 
   render() {
-    const aTextOn = this.props.title === "Ongoing" ? styles.selectedText : styles.unselectedText;
-    const bTextOn = this.props.title === "Planned" ? styles.selectedText : styles.unselectedText;
-    const aContOn = this.props.title === "Ongoing" ? styles.subContainerSelected : styles.subContainer;
-    const bContOn = this.props.title === "Planned" ? styles.subContainerSelected : styles.subContainer;
+    // const aTextOn = this.props.title === "Ongoing" ? styles.selectedText : styles.unselectedText;
+    // const bTextOn = this.props.title === "Planned" ? styles.selectedText : styles.unselectedText;
+    // const aContOn = this.props.title === "Ongoing" ? styles.subContainerSelected : styles.subContainer;
+    // const bContOn = this.props.title === "Planned" ? styles.subContainerSelected : styles.subContainer;
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={aContOn} onPress={() => this.props.aLink()}>
-          <View><Text style={aTextOn}>Ongoing</Text></View>
+        <TouchableOpacity onPress={() => this.selectOngoing(Actions.myevents)}>
+          <View style={this.state.ongoingCont}><Text style={this.state.ongoing}>Ongoing</Text></View>
         </TouchableOpacity>
-        <TouchableOpacity style={bContOn} onPress={() => this.props.bLink()}>
-            <View><Text style={bTextOn}>Planned</Text></View>
+        <TouchableOpacity onPress={() => this.selectPlanned(Actions.myevents2)}>
+            <View style={this.state.plannedCont}><Text style={this.state.planned}>Planned</Text></View>
         </TouchableOpacity>
       </View>
     );

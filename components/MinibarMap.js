@@ -22,7 +22,7 @@ export default class MinibarMap extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: verticalScale(50),
+    height: verticalScale(70),
     width: scale(375),
     backgroundColor: "#00042E",
     alignItems: 'center',
