@@ -6,6 +6,7 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import {MapView} from 'expo';
 import StarRating from 'react-native-star-rating';
+import Tabbar from '../components/Tabbar.js';
 
 const SingleResult = ({}) => {
     return (

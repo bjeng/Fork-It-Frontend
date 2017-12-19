@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import CategoryItem from '../components/CategoryItem.js';
+import Tabbar from '../components/Tabbar.js';
 
 const StatusPage = ({}) => {
     return (

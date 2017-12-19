@@ -6,10 +6,13 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import MinibarMap from '../components/MinibarMap.js';
 import { MapView } from 'expo';
+import Tabbar from '../components/Tabbar.js';
+import MinibarResults from '../components/MinibarResults.js';
 
 const ListMap = ({}) => {
     return (
       <View style={styles.container}>
+        <MinibarResults title={"Map"} aLink={() => Actions.listresults()} bLink={() => Actions.listmap()}/>
         <View style={styles.background}>
           <View>
             <MapView
@@ -77,13 +80,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'transparent',
-    height: verticalScale(667-70-50),
+    height: verticalScale(667-75-50),
     width: scale(375)
   },
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
-    height: verticalScale(667-70-50),
+    height: verticalScale(667-75-50),
     width: scale(375)
   },
 });

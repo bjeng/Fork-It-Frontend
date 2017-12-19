@@ -13,28 +13,30 @@ import Tabbar from '../components/Tabbar.js';
 class MyEvents extends React.Component {
   render() {
     return (
-      <View style={styles.background}>
-        <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
-        <Calendar/>
-        <ScrollView>
-          <View style={styles.titleContainer}>
-            <Text style={styles.titleText}>Upcoming</Text>
-          </View>
-          <View style={styles.listContainer}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionText}>This Week</Text>
+      <View>
+        <MyEventBar title={"Ongoing"} aLink={() => Actions.myevents()} bLink={() => Actions.myevents2()} cLink={() => Actions.myevents3()}/>
+        <View style={styles.background}>
+          <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
+          <Calendar/>
+          <ScrollView>
+            <View style={styles.titleContainer}>
+              <Text style={styles.titleText}>Upcoming</Text>
             </View>
-            <EventItem host={ProfPic}/>
-            <EventItem />
-            <EventItem />
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionText}>Next Week</Text>
+            <View style={styles.listContainer}>
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionText}>This Week</Text>
+              </View>
+              <EventItem host={ProfPic}/>
+              <EventItem />
+              <EventItem />
+              <View style={styles.sectionContainer}>
+                <Text style={styles.sectionText}>Next Week</Text>
+              </View>
+              <EventItem />
+              <EventItem />
             </View>
-            <EventItem />
-            <EventItem />
-          </View>
-        </ScrollView>
-        <Tabbar/>
+          </ScrollView>
+        </View>
       </View>
     );
   }
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    height: verticalScale(667),
+    height: verticalScale(667-50-75),
     width: scale(375)
   },
   backgroundColor: {

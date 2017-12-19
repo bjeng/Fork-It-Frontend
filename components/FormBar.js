@@ -36,18 +36,18 @@ export default class FormBar extends React.Component {
   }
 
   render() {
-    // const aTextOn = this.props.title === "Facts" ? styles.selectedText : styles.unselectedText;
-    // const bTextOn = this.props.title === "Friends" ? styles.selectedText : styles.unselectedText;
-    // const aContOn = this.props.title === "Facts" ? styles.subContainerSelected : styles.subContainer;
-    // const bContOn = this.props.title === "Friends" ? styles.subContainerSelected : styles.subContainer;
+    const aTextOn = this.props.title === "Facts" ? styles.selectedText : styles.unselectedText;
+    const bTextOn = this.props.title === "Friends" ? styles.selectedText : styles.unselectedText;
+    const aContOn = this.props.title === "Facts" ? styles.subContainerSelected : styles.subContainer;
+    const bContOn = this.props.title === "Friends" ? styles.subContainerSelected : styles.subContainer;
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={this.state.factsCont} onPress={() => this.selectFacts(Actions.eventform)}>
-          <View><Text style={this.state.facts}>Facts</Text></View>
+        <TouchableOpacity style={aContOn} onPress={this.props.aLink}>
+          <View><Text style={aTextOn}>Facts</Text></View>
         </TouchableOpacity>
-        <TouchableOpacity style={this.state.friendsCont} onPress={() => this.selectFriends(Actions.invitefriends)}>
-            <View><Text style={this.state.friends}>Friends</Text></View>
+        <TouchableOpacity style={bContOn} onPress={this.props.bLink}>
+            <View><Text style={bTextOn}>Friends</Text></View>
         </TouchableOpacity>
       </View>
     );

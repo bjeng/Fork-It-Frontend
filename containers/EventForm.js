@@ -11,13 +11,14 @@ import ExpandableDate from '../components/ExpandableDate.js';
 import ExpandableMeal from '../components/ExpandableMeal.js';
 import ExpandableLocation from '../components/ExpandableLocation.js';
 import ExpandableCuisine from '../components/ExpandableCuisine.js';
+import Tabbar from '../components/Tabbar.js';
 
 const EventForm = ({}) => {
     return (
       <View style={styles.container}>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
-          {/* <FormBar title={"Facts"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/> */}
+          <FormBar title={"Facts"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/>
           <View style={styles.scroll}>
             <ScrollView>
               <ExpandableTitle/>
@@ -48,13 +49,13 @@ const mapDispatchToProps = (dispatch) => {
 const styles = EStyleSheet.create({
   background: {
     backgroundColor: 'transparent',
-    height: verticalScale(667-75-50),
+    height: verticalScale(667-50),
     width: '100%',
   },
   backgroundColor: {
     position: 'absolute',
     top: 0,
-    height: verticalScale(667),
+    height: verticalScale(667-50),
     width: scale(375)
   },
   scroll: {
