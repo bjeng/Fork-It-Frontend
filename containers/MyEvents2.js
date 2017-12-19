@@ -13,7 +13,7 @@ class MyEvents2 extends React.Component {
   render() {
     return (
       <View style={styles.background}>
-        <MyEventBar title={'Planned'} aLink={Actions.myevents} bLink={Actions.myevents2}/>
+        {/* <MyEventBar title={'Planned'} aLink={Actions.myevents} bLink={Actions.myevents2}/> */}
         <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
         <Calendar/>
         <ScrollView>

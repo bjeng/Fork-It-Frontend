@@ -13,7 +13,7 @@ class ExpandableMeal extends Component{
         this.state = {
             meal: "",
             expanded: false,
-            animation: new Animated.Value(96.5)
+            animation: new Animated.Value(verticalScale(96.5))
         };
     }
 

@@ -6,30 +6,63 @@ import Dash from 'react-native-dash';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default class MyEventBar extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
+    this.state = {
+      ongoing: styles.selectedText,
+      ongoingCont: styles.subContainerSelected,
+      planned: styles.unselectedText,
+      plannedCont: styles.subContainer,
+      notifCont: styles.nUnselected
+    }
+  }
+
+  selectOngoing(fn) {
+    this.setState({
+      ongoing: styles.selectedText,
+      ongoingCont: styles.subContainerSelected,
+      planned: styles.unselectedText,
+      plannedCont: styles.subContainer,
+      notifCont: styles.nUnselected
+    })
+    fn()
+  }
+
+  selectPlanned(fn) {
+    this.setState({
+      ongoing: styles.unselectedText,
+      ongoingCont: styles.subContainer,
+      planned: styles.selectedText,
+      plannedCont: styles.subContainerSelected,
+      notifCont: styles.nUnselected
+    })
+    fn()
+  }
+  
+  selectNotif(fn) {
+    this.setState({
+      ongoing: styles.unselectedText,
+      ongoingCont: styles.subContainer,
+      planned: styles.unselectedText,
+      plannedCont: styles.subContainer,
+      notifCont: styles.nSelected
+    })
+    fn()
   }
 
 
   render() {
-    const aTextOn = this.props.title === "Ongoing" ? styles.selectedText : styles.unselectedText;
-    const bTextOn = this.props.title === "Planned" ? styles.selectedText : styles.unselectedText;
-    const aContOn = this.props.title === "Ongoing" ? styles.subContainerSelected : styles.subContainer;
-    const bContOn = this.props.title === "Planned" ? styles.subContainerSelected : styles.subContainer;
-    const cContOn = this.props.title === "Notif" ? styles.nSelected : styles.nUnselected;
-
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={Actions.myevents3} style={cContOn}>
+        <TouchableOpacity onPress={() => this.selectNotif(Actions.myevents3)} style={this.state.notifCont}>
           <Text style={styles.nText}>N</Text>
+        </TouchableOpacity>    
+        <TouchableOpacity onPress={() => this.selectOngoing(Actions.myevents)}>
+          <View style={this.state.ongoingCont}><Text style={this.state.ongoing}>Ongoing</Text></View>
         </TouchableOpacity>
-        <TouchableOpacity style={aContOn} onPress={() => this.props.aLink()}>
-          <View><Text style={aTextOn}>Ongoing</Text></View>
+        <TouchableOpacity onPress={() => this.selectPlanned(Actions.myevents2)}>
+            <View style={this.state.plannedCont}><Text style={this.state.planned}>Planned</Text></View>
         </TouchableOpacity>
-        <TouchableOpacity style={bContOn} onPress={() => this.props.bLink()}>
-            <View><Text style={bTextOn}>Planned</Text></View>
-        </TouchableOpacity>
-
       </View>
     );
   }

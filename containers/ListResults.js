@@ -12,8 +12,6 @@ import restImage from "../assets/burger.jpg";
 const ListResults = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
-        <MinibarResults/>
         <View style={styles.background}>
           <Image style={styles.backgroundColor} source={require("../assets/discoverHome.png")}/>
           <View style={styles.listContainer}>
@@ -58,14 +56,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'transparent',
-    height: verticalScale(667-70-50-50),
+    height: verticalScale(667-70-50),
     width: scale(375)
   },
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
     opacity: 0.8,
-    height: verticalScale(667-70-50-50),
+    height: verticalScale(667-70-50),
     width: scale(375)
   },
   listContainer: {

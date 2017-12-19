@@ -78,16 +78,16 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   background: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'transparent',
-    height: verticalScale(667-70),
+    height: verticalScale(667),
     width: scale(375),
   },
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
-    height: verticalScale(667-70),
+    height: verticalScale(667),
     width: scale(375)
   },
   topTile: {

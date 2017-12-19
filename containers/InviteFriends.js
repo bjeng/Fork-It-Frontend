@@ -51,9 +51,9 @@ class InviteFriends extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FormBar title={"Friends"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/>
+        {/* <FormBar title={"Friends"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/> */}
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
+          {/* <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/> */}
           <View style={styles.createContainer}>
             <TouchableOpacity style={styles.optionContainer} onPress={() => {this.fofToggle()}}>
               <Image style={styles.group} source={require("../assets/groupMGrey.png")}/>

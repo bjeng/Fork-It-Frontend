@@ -10,7 +10,7 @@ const Profile = ({}) => {
       <View style={styles.container}>
         <Navbar/>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
+          <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
           <View style={styles.userContainer}>
             <View style={styles.profilePicture}>
               <Image style={{height: verticalScale(80), width: scale(80), borderRadius: 50}} source={require("../assets/whiteman.png")}/>
@@ -18,7 +18,6 @@ const Profile = ({}) => {
             <View style={styles.profileDetails}>
               <Text>USERNAME</Text>
               <Text>some other stuff</Text>
-              <TouchableOpacity onPress={Actions.preferences}><Text>Edit Preferences HERE</Text></TouchableOpacity>
             </View>
           </View>
           <View style={styles.topContainer}>
@@ -34,7 +33,7 @@ const Profile = ({}) => {
               <TouchableOpacity onPress={Actions.friendlist}><Text>FRIENDS</Text></TouchableOpacity>
             </View>
             <View style={styles.icon}>
-              <TouchableOpacity onPress={Actions.personaldata}><Text>DATA</Text></TouchableOpacity>
+              <TouchableOpacity onPress={Actions.preferences}><Text>SETTINGS</Text></TouchableOpacity>
             </View>
           </View>
         </View>
