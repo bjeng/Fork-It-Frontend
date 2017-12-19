@@ -13,7 +13,7 @@ class ExpandableTitle extends Component{
         this.state = {
             title: "",
             expanded: false,
-            animation: new Animated.Value(96.5)
+            animation: new Animated.Value(verticalScale(96.5))
         };
     }
 
@@ -84,7 +84,6 @@ var styles = StyleSheet.create({
     container: {
       overflow:'hidden',
       width: scale(358),
-      height: verticalScale(96.5),
     },
     titleContainer: {
       flexDirection: 'row',

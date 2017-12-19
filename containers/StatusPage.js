@@ -9,7 +9,7 @@ import CategoryItem from '../components/CategoryItem.js';
 const StatusPage = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
+        <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
         <View style={styles.background}>
           <View style={styles.currentContainer}>
             <Text style={styles.statusText}>Game Closed!</Text>
@@ -90,9 +90,15 @@ const styles = StyleSheet.create({
   background: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F8F8F8',
-    height: verticalScale(667-70-50),
+    // backgroundColor: 'transparent',
+    height: verticalScale(667-50),
     width: scale(375),
+  },
+  backgroundColor: {
+    position: 'absolute',
+    top: 0,
+    height: verticalScale(667),
+    width: scale(375)
   },
   detailsContainer: {
     width: scale(375),
@@ -102,10 +108,11 @@ const styles = StyleSheet.create({
   },
   currentContainer: {
     width: scale(375),
-    flex: 1,
-    justifyContent: 'center',
+    height: verticalScale(75),
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    backgroundColor: "#646464"
+    backgroundColor: "#EBEBEB",
+    paddingBottom: verticalScale(10)
   },
   actionContainer: {
     width: scale(375),
@@ -117,7 +124,7 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderBottomWidth: 1,
     width: scale(375),
-    flex: 8
+    flex: 9
   },
   hostCircle: {
     height: verticalScale(50),
@@ -144,8 +151,8 @@ const styles = StyleSheet.create({
   },
   statusText: {
     fontFamily: 'Futura',
-    color: 'white',
-    fontSize: moderateScale(16)
+    color: '#646464',
+    fontSize: moderateScale(20)
   },
   detailsLeft: {
     width: scale(200),
@@ -156,11 +163,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Futura',
     color: '#646464',
     fontSize: moderateScale(18),
-    fontWeight: 'bold'
   },
   lightFont: {
     fontFamily: 'Futura',
-    color: '#A2A2A2',
+    color: '#8D8D8D',
     fontSize: moderateScale(16)
   },
   detailsRight: {
@@ -188,7 +194,7 @@ const styles = StyleSheet.create({
   guestsBar: {
     width: scale(220),
     height: verticalScale(55),
-    backgroundColor: '#646464',
+    backgroundColor: 'rgba(255,255,255,.5)',
     borderRadius: scale(55),
     flexDirection: 'row',
     alignItems: 'center'

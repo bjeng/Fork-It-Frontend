@@ -12,7 +12,7 @@ class ExpandableLocation extends Component{
         super(props);
         this.state = {
             expanded: false,
-            animation: new Animated.Value(96.5)
+            animation: new Animated.Value(verticalScale(96.5))
         };
     }
 

@@ -8,10 +8,11 @@ import Navbar from '../components/Navbar.js';
 const MultiResult = ({}) => {
     return (
       <View style={styles.container}>
-        <Navbar/>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/Discover.png")}/>
-          <TouchableOpacity onPress={Actions.discover}><Text>Multi Player Result Page</Text></TouchableOpacity>
+          <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
+          <Image style={styles.backgroundColor} source={{uri: 'https://media.giphy.com/media/120ErahsQyf1q8/giphy.gif'}}/>
+          <View><Text style={styles.celebrateText}>Your Restaurant has been selected!</Text></View>
+          <TouchableOpacity style={styles.goButton} onPress={Actions.singleresult}><Text style={styles.goText}>See the Result</Text></TouchableOpacity>
         </View>
       </View>
     );
@@ -40,15 +41,36 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    height: verticalScale(667-70-50),
+    height: verticalScale(667-50),
     width: scale(375),
   },
   backgroundColor: {
     top: verticalScale(0),
     position: 'absolute',
-    height: verticalScale(667-70-50),
+    height: verticalScale(667-50),
     width: scale(375)
   },
+  celebrateText:{
+    fontFamily: 'Futura',
+    color: 'white',
+    fontSize: moderateScale(42),
+    textAlign: 'center'
+  },
+  goButton: {
+    backgroundColor: 'rgba(255,255,255,.5)',
+    width: scale(300),
+    height: verticalScale(70),
+    padding: scale(20),
+    borderRadius: scale(75),
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: scale(20)
+  },
+  goText: {
+    fontFamily: 'Futura',
+    color: '#646464',
+    fontSize: moderateScale(24)
+  }
 });
 
 export default connect(

@@ -14,7 +14,7 @@ class ExpandableDate extends Component{
         this.state = {
             title: "test",
             expanded: false,
-            animation: new Animated.Value(96.5)
+            animation: new Animated.Value(verticalScale(96.5))
         };
     }
 
