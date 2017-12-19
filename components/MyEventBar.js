@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Dash from 'react-native-dash';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 export default class MyEventBar extends React.Component {
   constructor() {
@@ -11,7 +12,8 @@ export default class MyEventBar extends React.Component {
       ongoing: styles.selectedText,
       ongoingCont: styles.subContainerSelected,
       planned: styles.unselectedText,
-      plannedCont: styles.subContainer
+      plannedCont: styles.subContainer,
+      notifCont: styles.nUnselected
     }
   }
 
@@ -20,7 +22,8 @@ export default class MyEventBar extends React.Component {
       ongoing: styles.selectedText,
       ongoingCont: styles.subContainerSelected,
       planned: styles.unselectedText,
-      plannedCont: styles.subContainer
+      plannedCont: styles.subContainer,
+      notifCont: styles.nUnselected
     })
     fn()
   }
@@ -30,19 +33,30 @@ export default class MyEventBar extends React.Component {
       ongoing: styles.unselectedText,
       ongoingCont: styles.subContainer,
       planned: styles.selectedText,
-      plannedCont: styles.subContainerSelected
+      plannedCont: styles.subContainerSelected,
+      notifCont: styles.nUnselected
+    })
+    fn()
+  }
+  
+  selectNotif(fn) {
+    this.setState({
+      ongoing: styles.unselectedText,
+      ongoingCont: styles.subContainer,
+      planned: styles.unselectedText,
+      plannedCont: styles.subContainer,
+      notifCont: styles.nSelected
     })
     fn()
   }
 
-  render() {
-    // const aTextOn = this.props.title === "Ongoing" ? styles.selectedText : styles.unselectedText;
-    // const bTextOn = this.props.title === "Planned" ? styles.selectedText : styles.unselectedText;
-    // const aContOn = this.props.title === "Ongoing" ? styles.subContainerSelected : styles.subContainer;
-    // const bContOn = this.props.title === "Planned" ? styles.subContainerSelected : styles.subContainer;
 
+  render() {
     return (
       <View style={styles.container}>
+        <TouchableOpacity onPress={() => this.selectNotif(Actions.myevents3)} style={this.state.notifCont}>
+          <Text style={styles.nText}>N</Text>
+        </TouchableOpacity>    
         <TouchableOpacity onPress={() => this.selectOngoing(Actions.myevents)}>
           <View style={this.state.ongoingCont}><Text style={this.state.ongoing}>Ongoing</Text></View>
         </TouchableOpacity>
@@ -54,19 +68,38 @@ export default class MyEventBar extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
   container: {
     height: verticalScale(75),
     width: scale(375),
     backgroundColor: "#EBEBEB",
-    alignItems: 'center',
+    alignItems: 'flex-end',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+  },
+  nUnselected: {
+    width: '12%',
+    height: '100%',
+    backgroundColor: '#B7B7B7',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nSelected: {
+    width: '12%',
+    height: '100%',
+    backgroundColor: '#535353',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nText: {
+    color: 'white',
+    fontFamily: 'Futura',
+    fontSize: moderateScale(25)
   },
   subContainerSelected: {
     flexDirection: 'column',
     height: verticalScale(75),
-    width: scale(375/2),
+    width: '44%',
     justifyContent: 'flex-end',
     alignItems: 'center',
     borderBottomWidth: 3,
@@ -75,17 +108,11 @@ const styles = StyleSheet.create({
   subContainer: {
     flexDirection: 'column',
     height: verticalScale(75),
-    width: scale(375/2),
+    width: '44%',
     justifyContent: 'flex-end',
     alignItems: 'center',
     borderBottomWidth: 1.5,
     borderBottomColor: '#8D8D8D'
-  },
-  minibarText: {
-    fontFamily: 'Futura',
-    color: 'white',
-    fontSize: moderateScale(26),
-    textAlign: 'center'
   },
   selectedText: {
     fontFamily: 'Futura',

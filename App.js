@@ -11,6 +11,7 @@ import DiscoverHome from './containers/DiscoverHome.js';
 import Eats1 from './containers/Eats1.js';
 import Eats2 from './containers/Eats2.js';
 import Eats3 from './containers/Eats3.js';
+import Eats4 from './containers/Eats4.js';
 import Algo from './containers/Algo.js';
 import ListResults from './containers/ListResults.js';
 import ListMap from './containers/ListMap.js';
@@ -31,6 +32,7 @@ import MultiResult from './containers/MultiResult.js';
 import InviteFriends from './containers/InviteFriends.js';
 import MyEvents from './containers/MyEvents.js';
 import MyEvents2 from './containers/MyEvents2.js';
+import MyEvents3 from './containers/MyEvents3.js';
 import MinibarResults from './components/MinibarResults.js';
 import MyEventBar from './components/MyEventBar.js';
 import FormBar from './components/FormBar.js';
@@ -71,6 +73,7 @@ const Scenes = Actions.create(
         <Scene tabs={true} tabBarComponent={MyEventBar} tabBarPosition='top'>
           <Scene key="myevents" component={MyEvents} hideNavBar={true}/>
           <Scene key="myevents2" component={MyEvents2} hideNavBar={true}/>
+          <Scene key="myevents3" component={MyEvents3} hideNavBar={true}/>
         </Scene>
       </Scene>
     </Scene>
