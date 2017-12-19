@@ -21,9 +21,12 @@ const Eats1 = ({}) => {
           </View>
           <View style={styles.colSubContainer}>
             <TouchableOpacity style={styles.option}>
-              <Text style={styles.optionText}>Low Key</Text>
               <View style={styles.dollarCols}>
                 <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.dollarCols}>
                 <View style={styles.rowSubContainer}>
                   <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
                   <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
@@ -31,18 +34,12 @@ const Eats1 = ({}) => {
               </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.option}>
-              <Text style={styles.optionText}>Ball Out</Text>
               <View style={styles.dollarCols}>
                 <View style={styles.rowSubContainer}>
                   <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
                   <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
                   <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
-                </View>
-                <View style={styles.rowSubContainer}>
-                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
-                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
-                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
-                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+                  <Text style={styles.plus}>+</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -122,7 +119,7 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(3),
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,.20)',
-    height: verticalScale(90),
+    height: verticalScale(80),
     width: scale(340),
     justifyContent: 'center',
     alignItems: 'center',
@@ -137,8 +134,8 @@ const styles = StyleSheet.create({
     margin: scale(10)
   },
   dollarSigns: {
-    height: verticalScale(20),
-    width: scale(20)
+    height: verticalScale(50),
+    width: scale(50)
   },
   dollarCols: {
     flexDirection: 'column',
@@ -153,6 +150,13 @@ const styles = StyleSheet.create({
   dice: {
     height: verticalScale(35),
     width: scale(35)
+  },
+  plus: {
+    fontFamily: 'Futura',
+    color: 'white',
+    fontSize: moderateScale(45),
+    fontWeight: 'bold',
+    left: scale(5)
   }
 });
 

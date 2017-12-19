@@ -51,9 +51,7 @@ class InviteFriends extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <FormBar title={"Friends"} aLink={() => Actions.eventform()} bLink={() => Actions.invitefriends()}/> */}
         <View style={styles.background}>
-          {/* <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/> */}
           <View style={styles.createContainer}>
             <TouchableOpacity style={styles.optionContainer} onPress={() => {this.fofToggle()}}>
               <Image style={styles.group} source={require("../assets/groupMGrey.png")}/>
@@ -63,7 +61,7 @@ class InviteFriends extends React.Component {
               <Image style={styles.group} source={require("../assets/plusMGrey.png")}/>
               <Text style={styles.optionText}>Contacts</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={Actions.eats4} style={styles.optionContainer}>
+            <TouchableOpacity onPress={Actions.statuspage} style={styles.optionContainer}>
               <Image style={styles.group} source={require("../assets/CubeLogoMGrey.png")}/>
               <Text style={styles.optionText}>Create</Text>
             </TouchableOpacity>

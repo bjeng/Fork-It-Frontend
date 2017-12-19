@@ -36,11 +36,6 @@ export default class FormBar extends React.Component {
   }
 
   render() {
-    // const aTextOn = this.props.title === "Facts" ? styles.selectedText : styles.unselectedText;
-    // const bTextOn = this.props.title === "Friends" ? styles.selectedText : styles.unselectedText;
-    // const aContOn = this.props.title === "Facts" ? styles.subContainerSelected : styles.subContainer;
-    // const bContOn = this.props.title === "Friends" ? styles.subContainerSelected : styles.subContainer;
-
     return (
       <View style={styles.container}>
         <TouchableOpacity style={this.state.factsCont} onPress={() => this.selectFacts(Actions.eventform)}>

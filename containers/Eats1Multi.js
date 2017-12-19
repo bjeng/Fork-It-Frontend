@@ -6,31 +6,44 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import Dash from 'react-native-dash';
 
-const Eats3 = ({}) => {
+const Eats1Multi = ({}) => {
     return (
       <View style={styles.container}>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/DiscoverEat-3.png")}/>
+          <Image style={styles.backgroundColor} source={require("../assets/DiscoverEat-1.png")}/>
           <View style={styles.topTile}>
             <View style={styles.rowSubContainer}>
               <Dash dashGap={0} dashColor={'white'} style={{width:scale(35), height:verticalScale(1), right:scale(5) }}/>
               <Text style={styles.timer}> 00:10 </Text>
               <Dash dashGap={0} dashColor={'white'} style={{width:scale(35), height:verticalScale(1), left:scale(5) }}/>
             </View>
-            <Text style={styles.topText}>How far away you wanna go?</Text>
+            <Text style={styles.topText}>How pricey are you going for?</Text>
           </View>
           <View style={styles.colSubContainer}>
             <TouchableOpacity style={styles.option}>
-              <Text style={styles.optionText}>Less than 1 mile</Text>
-              <View style={styles.rowSubContainer}>
-                <Image style={styles.hiker} source={require("../assets/Hikerwhite.png")}/>
+              <View style={styles.dollarCols}>
+                <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
               </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.option}>
-              <Text style={styles.optionText}>1 to 3 miles</Text>
-              <Image style={styles.car} source={require("../assets/carWhite.png")}/>
+              <View style={styles.dollarCols}>
+                <View style={styles.rowSubContainer}>
+                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+                </View>
+              </View>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={Actions.algo}>
+            <TouchableOpacity style={styles.option}>
+              <View style={styles.dollarCols}>
+                <View style={styles.rowSubContainer}>
+                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+                  <Image style={styles.dollarSigns} source={require("../assets/dollarsigns-white.png")}/>
+                  <Text style={styles.plus}>+</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={Actions.eats2multi}>
               <Text style={styles.gambleText}> Take a Gamble </Text>
               <Image style={styles.dice} source={require("../assets/red-dice-512.png")}/>
             </TouchableOpacity>
@@ -39,9 +52,6 @@ const Eats3 = ({}) => {
       </View>
     );
 }
-
-Eats3.propTypes = {
-};
 
 const mapStateToProps = (state) => {
     return {
@@ -58,7 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   background: {
     justifyContent: 'center',
@@ -101,27 +111,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Futura'
   },
-  hiker: {
-    height: verticalScale(55),
-    width: scale(55),
-    overflow: 'visible',
-    right: scale(10)
-  },
-  car: {
-    height: verticalScale(40),
-    width: scale(60),
-    overflow: 'visible'
-  },
-  timer: {
-    fontSize: moderateScale(45),
-    color: 'white',
-    fontFamily: 'Futura'
-  },
   option: {
     borderWidth: moderateScale(3),
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,.20)',
-    height: verticalScale(90),
+    height: verticalScale(80),
     width: scale(340),
     justifyContent: 'center',
     alignItems: 'center',
@@ -133,7 +127,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Futura',
     color: 'white',
     fontSize: moderateScale(30),
-    margin: scale(15)
+    margin: scale(10)
+  },
+  dollarSigns: {
+    height: verticalScale(50),
+    width: scale(50)
+  },
+  dollarCols: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   gambleText: {
     fontFamily: 'Futura',
@@ -143,10 +146,17 @@ const styles = StyleSheet.create({
   dice: {
     height: verticalScale(35),
     width: scale(35)
+  },
+  plus: {
+    fontFamily: 'Futura',
+    color: 'white',
+    fontSize: moderateScale(45),
+    fontWeight: 'bold',
+    left: scale(5)
   }
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Eats3);
+)(Eats1Multi);
