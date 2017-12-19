@@ -14,7 +14,6 @@ class MyEvents extends React.Component {
   render() {
     return (
       <View style={styles.background}>
-        {/* <MyEventBar title={'Ongoing'} aLink={Actions.myevents} bLink={Actions.myevents2}/> */}
         <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
         <Calendar/>
         <ScrollView>
@@ -59,13 +58,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    height: verticalScale(667-50),
+    height: verticalScale(667),
     width: scale(375)
   },
   backgroundColor: {
-    top: verticalScale(75),
     position: 'absolute',
-    height: verticalScale(667-50-75),
+    top: 0,
+    height: verticalScale(667),
     width: scale(375)
   },
   titleContainer: {

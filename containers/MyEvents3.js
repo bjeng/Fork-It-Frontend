@@ -14,7 +14,6 @@ class MyEvents3 extends React.Component {
     return (
       <View style={styles.background}>
         <Image style={styles.backgroundColor} source={require("../assets/MultiForm.png")}/>
-        <MyEventBar title={'Notif'} aLink={Actions.myevents} bLink={Actions.myevents2}/>
         <ScrollView style={{top: verticalScale(20)}}>
           <View style={styles.titleContainer}>
             <Text style={styles.titleText}>New Events</Text>

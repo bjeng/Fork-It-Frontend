@@ -38,7 +38,7 @@ export default class MyEventBar extends React.Component {
     })
     fn()
   }
-  
+
   selectNotif(fn) {
     this.setState({
       ongoing: styles.unselectedText,
@@ -56,12 +56,12 @@ export default class MyEventBar extends React.Component {
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.selectNotif(Actions.myevents3)} style={this.state.notifCont}>
           <Text style={styles.nText}>N</Text>
-        </TouchableOpacity>    
-        <TouchableOpacity onPress={() => this.selectOngoing(Actions.myevents)}>
-          <View style={this.state.ongoingCont}><Text style={this.state.ongoing}>Ongoing</Text></View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.selectPlanned(Actions.myevents2)}>
-            <View style={this.state.plannedCont}><Text style={this.state.planned}>Planned</Text></View>
+        <TouchableOpacity style={this.state.ongoingCont}onPress={() => this.selectOngoing(Actions.myevents)}>
+          <Text style={this.state.ongoing}>Ongoing</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.selectPlanned(Actions.myevents2)} style={this.state.plannedCont}>
+          <Text style={this.state.planned}>Planned</Text>
         </TouchableOpacity>
       </View>
     );
