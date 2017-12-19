@@ -3,6 +3,7 @@ import {StyleSheet,Text,View,Image,TouchableOpacity,TextInput} from 'react-nativ
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { scale, verticalScale, moderateScale } from '../scaler.js';
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 class CategoryItem extends Component{
     constructor(props){
@@ -11,20 +12,19 @@ class CategoryItem extends Component{
         };
     }
 
-
     render(){
         return (
             <View style={styles.container} >
               <View style={styles.categoryContainer}>
-                <View>
-                  <Image source={require('../assets/DesktopCopy2Black.png')} style={{height: 30, width: 30}}/>
+                <View style={styles.iconContainer}>
+                  <Image source={this.props.img} style={styles.icon}/>
                 </View>
                 <View>
-                  <Text style={styles.categoryText}>Cuisine</Text>
+                  <Text style={styles.categoryText}>{this.props.type}</Text>
                 </View>
               </View>
               <View style={styles.winningContainer}>
-                <Text style={styles.winningText}>Mexican</Text>
+                <Text style={styles.winningText}>{this.props.winning}</Text>
               </View>
               <View style={styles.respondedContainer}>
                 <View style={styles.guestCircle}>
@@ -40,7 +40,7 @@ class CategoryItem extends Component{
 }
 export default CategoryItem;
 
-var styles = StyleSheet.create({
+var styles = EStyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
@@ -51,12 +51,12 @@ var styles = StyleSheet.create({
   },
   categoryText: {
     fontFamily: 'Futura',
-    color: '#646464',
+    color: '#8D8D8D',
     fontSize: moderateScale(18)
   },
   categoryContainer: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row'
   },
@@ -88,5 +88,15 @@ var styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  iconContainer: {
+    width: '50%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  icon: {
+    height: verticalScale(30),
+    width: scale(30),
+    overflow: 'visible'
   }
 });

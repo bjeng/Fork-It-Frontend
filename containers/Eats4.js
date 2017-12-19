@@ -26,6 +26,9 @@ const Eats4 = ({}) => {
             <Text style={styles.topText}>What time?</Text>
             <SelectorTime/>
           </View>
+          <TouchableOpacity style={styles.next} onPress={Actions.statuspage}>
+            <Text style={styles.nextText}>SUBMIT</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   background: {
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'flex-start',
     backgroundColor: 'transparent',
     height: verticalScale(667),
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    bottom: verticalScale(50),
+    bottom: verticalScale(90),
     marginTop: verticalScale(20)
   },
   topText: {
@@ -113,24 +116,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Futura'
   },
-  option: {
-    borderWidth: moderateScale(3),
-    borderColor: 'white',
-    backgroundColor: 'rgba(255,255,255,.20)',
-    height: verticalScale(90),
-    width: scale(340),
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderRadius: scale(50),
-    margin: moderateScale(8)
-  },
-  optionText: {
-    fontFamily: 'Futura',
-    color: 'white',
-    fontSize: moderateScale(30),
-    margin: scale(15)
-  },
   gambleText: {
     fontFamily: 'Futura',
     color: 'white',
@@ -139,6 +124,18 @@ const styles = StyleSheet.create({
   dice: {
     height: verticalScale(35),
     width: scale(35)
+  },
+  next: {
+    width: '100%',
+    height: verticalScale(70),
+    backgroundColor: '#BFBFBF',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nextText: {
+    fontFamily: 'Futura',
+    color: 'white',
+    fontSize: moderateScale(35),
   }
 });
 

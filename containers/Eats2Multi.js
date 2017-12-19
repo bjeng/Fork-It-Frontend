@@ -6,31 +6,37 @@ import { scale, verticalScale, moderateScale } from '../scaler.js';
 import Navbar from '../components/Navbar.js';
 import Dash from 'react-native-dash';
 
-const Eats3 = ({}) => {
+const Eats2Multi = ({}) => {
     return (
       <View style={styles.container}>
         <View style={styles.background}>
-          <Image style={styles.backgroundColor} source={require("../assets/DiscoverEat-3.png")}/>
+          <Image style={styles.backgroundColor} source={require("../assets/DiscoverEat-2.png")}/>
           <View style={styles.topTile}>
             <View style={styles.rowSubContainer}>
               <Dash dashGap={0} dashColor={'white'} style={{width:scale(35), height:verticalScale(1), right:scale(5) }}/>
               <Text style={styles.timer}> 00:10 </Text>
               <Dash dashGap={0} dashColor={'white'} style={{width:scale(35), height:verticalScale(1), left:scale(5) }}/>
             </View>
-            <Text style={styles.topText}>How far away you wanna go?</Text>
+            <Text style={styles.topText}>What type of cuisine?</Text>
           </View>
           <View style={styles.colSubContainer}>
             <TouchableOpacity style={styles.option}>
-              <Text style={styles.optionText}>Less than 1 mile</Text>
-              <View style={styles.rowSubContainer}>
-                <Image style={styles.hiker} source={require("../assets/Hikerwhite.png")}/>
-              </View>
+              <Text style={styles.optionText}>Mexican</Text>
+              <Image style={styles.mexican} source={require("../assets/taco.png")}/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.option}>
-              <Text style={styles.optionText}>1 to 3 miles</Text>
-              <Image style={styles.car} source={require("../assets/carWhite.png")}/>
+              <Text style={styles.optionText}>Japanese</Text>
+              <Image style={styles.japanese} source={require("../assets/japanese.png")}/>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={Actions.algo}>
+            <TouchableOpacity style={styles.option}>
+              <Text style={styles.optionText}>American</Text>
+              <Image style={styles.american} source={require("../assets/american.png")}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
+              <Text style={styles.optionText}>Italian</Text>
+              <Image style={styles.italian} source={require("../assets/italian.png")}/>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.option, styles.rowSubContainer]} onPress={Actions.eats4}>
               <Text style={styles.gambleText}> Take a Gamble </Text>
               <Image style={styles.dice} source={require("../assets/red-dice-512.png")}/>
             </TouchableOpacity>
@@ -39,9 +45,6 @@ const Eats3 = ({}) => {
       </View>
     );
 }
-
-Eats3.propTypes = {
-};
 
 const mapStateToProps = (state) => {
     return {
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   background: {
     justifyContent: 'center',
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
     width: scale(375)
   },
   topTile: {
-    height: verticalScale(250),
+    height: verticalScale(205),
     width: scale(375),
     justifyContent: 'center',
     alignItems: 'center',
@@ -85,32 +88,16 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center'
   },
-  rowSubContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   colSubContainer: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    width: scale(375),
+    width: scale(375)
   },
-  timer: {
-    fontSize: moderateScale(45),
-    color: 'white',
-    fontFamily: 'Futura'
-  },
-  hiker: {
-    height: verticalScale(55),
-    width: scale(55),
-    overflow: 'visible',
-    right: scale(10)
-  },
-  car: {
-    height: verticalScale(40),
-    width: scale(60),
-    overflow: 'visible'
+  rowSubContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   timer: {
     fontSize: moderateScale(45),
@@ -121,19 +108,28 @@ const styles = StyleSheet.create({
     borderWidth: moderateScale(3),
     borderColor: 'white',
     backgroundColor: 'rgba(255,255,255,.20)',
-    height: verticalScale(90),
+    height: verticalScale(65),
     width: scale(340),
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: scale(50),
-    margin: moderateScale(8)
+    margin: moderateScale(6)
   },
   optionText: {
     fontFamily: 'Futura',
     color: 'white',
     fontSize: moderateScale(30),
-    margin: scale(15)
+    margin: scale(10)
+  },
+  dollarSigns: {
+    height: verticalScale(20),
+    width: scale(20)
+  },
+  dollarCols: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   gambleText: {
     fontFamily: 'Futura',
@@ -143,10 +139,27 @@ const styles = StyleSheet.create({
   dice: {
     height: verticalScale(35),
     width: scale(35)
-  }
+  },
+  mexican: {
+    height: verticalScale(50),
+    width: scale(70)
+  },
+  japanese: {
+    height: verticalScale(50),
+    width: scale(60)
+  },
+  american: {
+    height: verticalScale(30),
+    width: scale(65),
+  },
+  italian: {
+    height: verticalScale(30),
+    width: scale(80),
+  },
+
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Eats3);
+)(Eats2Multi);

@@ -9,7 +9,9 @@ import Login from './containers/Login.js';
 import Register from './containers/Register.js';
 import DiscoverHome from './containers/DiscoverHome.js';
 import Eats1 from './containers/Eats1.js';
+import Eats1Multi from './containers/Eats1Multi.js';
 import Eats2 from './containers/Eats2.js';
+import Eats2Multi from './containers/Eats2Multi.js';
 import Eats3 from './containers/Eats3.js';
 import Eats4 from './containers/Eats4.js';
 import Algo from './containers/Algo.js';
@@ -38,7 +40,6 @@ import MyEventBar from './components/MyEventBar.js';
 import FormBar from './components/FormBar.js';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-const store = configureStore();
 EStyleSheet.build();
 
 const Scenes = Actions.create(
@@ -48,16 +49,19 @@ const Scenes = Actions.create(
       <Scene key="login" component={Login} hideNavBar={true}/>
       <Scene key="register" component={Register} hideNavBar={true}/>
       <Scene key="eats1" component={Eats1} hideNavBar={true} hideTabBar={true}/>
+      <Scene key="eats1multi" component={Eats1Multi} hideNavBar={true} hideTabBar={true}/>
       <Scene key="eats2" component={Eats2} hideNavBar={true} hideTabBar={true}/>
+      <Scene key="eats2multi" component={Eats2Multi} hideNavBar={true} hideTabBar={true}/>
       <Scene key="eats3" component={Eats3} hideNavBar={true} hideTabBar={true}/>
+      <Scene key="eats4" component={Eats4} hideNavBar={true} hideTabBar={true}/>
       <Scene key="algo" component={Algo} hideNavBar={true} hideTabBar={true}/>
       <Scene key="multiresult" component={MultiResult} hideNavBar={true}/>
       <Scene key="root2" tabs={true} animationEnabled={false} tabBarComponent={Tabbar}>
-        <Scene key="preferences" component={Preferences} hideNavBar={true}/>
-        <Scene key="favoritelist" component={FavoriteList} hideNavBar={true}/>
-        <Scene key="friendlist" component={FriendList} hideNavBar={true}/>
-        <Scene key="myforks" component={MyForks} hideNavBar={true}/>
-        <Scene key="statuspage" component={StatusPage} hideNavBar={true}/>
+        <Scene key="preferences" component={Preferences} hideNavBar={true} lazy={true}/>
+        <Scene key="favoritelist" component={FavoriteList} hideNavBar={true} lazy={true}/>
+        <Scene key="friendlist" component={FriendList} hideNavBar={true} lazy={true}/>
+        <Scene key="myforks" component={MyForks} hideNavBar={true} lazy={true}/>
+        <Scene key="statuspage" component={StatusPage} hideNavBar={true} lazy={true}/>
         <Scene key="discover" component={DiscoverHome} hideNavBar={true}/>
         <Scene key="profile" component={Profile} hideNavBar={true}/>
         <Scene key="search" component={Search} hideNavBar={true}/>
@@ -80,6 +84,8 @@ const Scenes = Actions.create(
     <Scene key="resultlightbox" component={ResultLightbox} hideNavBar={true}/>
   </Lightbox>
 );
+
+const store = configureStore();
 
 export default class App extends Component {
   render() {
