@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
-    height: verticalScale(667),
+    height: verticalScale(667-50-75),
     width: scale(375)
   },
   backgroundColor: {
