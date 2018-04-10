@@ -1,0 +1,3 @@
+# Fork-It-Frontend
+Fork It is a mobile app idea to help users decide what to do when they hangout with their friends. The app originally began as a simple decision-maker which broke a complicated decision down into its simpler parts. For example, while somebody may not know what they want to eat, they may know for certain that they're looking for something inexpensive. A typical user experience asks 3-5 simple question and intelligently narrows the user's final decision to three choices. Each of the options has details on the restaurant as well the option to map, Uber, or Lyft to the destination immediately. Future features of the project will include discovery tools for nightlife, arts/culture, and live events.
+
